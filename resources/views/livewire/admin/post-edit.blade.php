@@ -80,7 +80,10 @@ class extends Component {
         $this->post->assets()->save($asset);
         // add saved image to assets table
         $this->assets->push($asset);
+        // Reset form inputs
         $this->image = null;
+        $this->imageAlt = null;
+        $this->imageSource = null;
     }
 
     protected function generateImageTag(BlogPostAsset $asset)
