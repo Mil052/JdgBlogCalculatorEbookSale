@@ -13,7 +13,7 @@
                 <header class="md:hidden">
                     <button class="md:hidden" @click="openMobileMenu = true">open</button>
                 </header>
-                <div class="fixed top-0 lg:static z-20 h-full">
+                <div class="fixed top-0 md:static z-20 h-full">
                     <!-- Mobile Navigation Backdrop -->
                     <div x-show="openMobileMenu" class="absolute bg-coffee/75 h-full w-screen z-10 md:hidden"></div>
                     <!-- User Panel Menu -->

@@ -14,20 +14,39 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->nullable()->constrained();
-            $table->set('payment', ['online', 'traditional'])->nullable();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+            $table->enum('payment', ['online', 'traditional'])->nullable();
             $table->decimal('total_price');
-            $table->string('invoice_id');
-            $table->string('invoice_name');
-            $table->string('invoice_surname');
-            $table->string('invoice_company_name');
-            $table->string('invoice_postal_code');
-            $table->string('invoice_city');
-            $table->string('invoice_address');
-            $table->string('shipping_postal_code');
-            $table->string('shipping_city');
-            $table->string('shipping_address');
-            $table->string('shipping_postal_code');
+            // status
+            $table->enum('status', ['pending', 'accepted', 'completed']);
+            // order shipping data 
+            $table->string('name');
+            $table->string('surname');
+            $table->string('postal_code');
+            $table->string('city');
+            $table->string('address');
+            $table->string('additional_info')->nullable();
+        });
+
+        Schema::create('order_product', function (Blueprint $table) {
+            $table->foreignId('order_id')->constrained();
+            $table->foreignId('product_id')->constrained();
+            $table->integer('amount');
+            $table->decimal('price');
+        });
+
+         Schema::create('invoices', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            // order
+            $table->foreignId('order_id')->nullable()->constrained();
+            // invoice client data
+            $table->string('name');
+            $table->string('surname');
+            $table->string('company')->nullable();
+            $table->string('postal_code');
+            $table->string('city');
+            $table->string('address');
         });
     }
 
@@ -37,5 +56,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_product');
+        Schema::dropIfExists('invoices');
     }
 };

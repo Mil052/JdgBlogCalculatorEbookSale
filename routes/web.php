@@ -6,6 +6,9 @@ use Livewire\Volt\Volt;
 Volt::route('/', 'home')->name('home');
 Volt::route('blog', 'blog')->name('blog');
 Volt::route('blog/{post}', 'show-post')->name('post');
+Volt::route('shop', 'shop.products')->name('shop');
+Volt::route('shop/product/{product}', 'shop.product-details')->name('product-details');
+Volt::route('shop/cart', 'shop.shopping-cart')->name('shopping-cart');
 
 Route::middleware(['auth'])->group(function () {
     Volt::route('dashboard', 'user.dashboard')->name('dashboard');
