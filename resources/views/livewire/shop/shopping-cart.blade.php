@@ -4,10 +4,11 @@ use Livewire\Volt\Component;
 
 new class extends Component {
     public $cartId;
+    public $cart;
 
     public function mount ()
     {
-        $this->cartId = request()->cookie('discountToken');
+        $this->cartId = request()->cookie('cartId');
     }
 }; ?>
 

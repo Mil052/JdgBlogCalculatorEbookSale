@@ -18,6 +18,10 @@ class extends Component {
 
 <section>
     <h1>Shop</h1>
+    <div>
+        <div>Cart:</div>
+        <livewire:shop.cart-link-icon/>
+    </div>
     <ul class="grid grid-cols-3 gap-4">
         @foreach ($products as $product)
             <li wire:key="{{ $product->id }}">
@@ -28,7 +32,7 @@ class extends Component {
                         <h3>{{ $product->type }}</h3>
                         <p>{{ $product->excerpt }}</p>
                         <a href="{{ '/shop/product/' . $product->id }}">zobacz szczegóły</a>
-                        <button type="button">Dodaj do koszyka</button>
+                        <livewire:shop.add-to-cart-btn :product-id="$product->id"/>
                     </div>
                 </div>
             </li>
