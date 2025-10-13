@@ -3,13 +3,13 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="bg-light-grey min-h-screen max-w-7xl mx-auto grid grid-rows-[auto_1fr_auto]">
-        <header>
-            <nav class="flex justify-between items-center">
-                <h1 class="font-logo italic text-4xl">
+    <body class="relative min-h-screen grid grid-rows-[auto_1fr_auto]">
+        <header class="bg-white">
+            <nav class="flex justify-between items-center px-12 py-6 max-w-7xl mx-auto">
+                <h1 class="font-logo italic text-4xl/9 text-coffee">
                     <a href="/">moja JDG</a>
                 </h1>
-                <ul class="flex gap-8">
+                <ul class="flex gap-8 text-coffee font-technic text-xl">
                     <li>
                         <a href="/blog" wire:navigate>Wszystko o JDG | Blog</a>
                     </li>
@@ -30,16 +30,42 @@
                         </a>
                     </li>
                     <li>
-                        <livewire:shop.cart-link-icon/>
+                        <livewire:shop.cart-link-icon />
                     </li>
                 </ul>
             </nav>
         </header>
-        <main>
+        <main class="max-w-7xl w-full mx-auto">
             {{ $slot }}
         </main>
-        <footer>
-            <a href="/admin" wire:navigate>panel administratora</a>
+        <footer class=" bg-coffee">
+            <div class="flex items-center justify-between max-w-7xl mx-auto px-12 py-4">
+                <h1 class="font-logo italic text-2xl/6 text-white">
+                    <a href="/">moja JDG</a>
+                </h1>
+                <nav class="flex justify-between items-center">
+                    <ul class="flex gap-8 text-white font-technic text-lg font-light">
+                        <li>
+                            <a href="/blog" wire:navigate>Wszystko o JDG | Blog</a>
+                        </li>
+                        <li>
+                            <a href="/shop" wire:navigate>Nasze Książki | Sklep</a>
+                        </li>
+                        <li>
+                            <a href="#" wire:navigate>O nas</a>
+                        </li>
+                    </ul>
+                </nav>
+                @if (Auth::user() && Auth::user()->is_admin)
+                    <a href="/admin" wire:navigate text-white font-technic text-lg font-light>
+                        panel administratora
+                    </a>
+                @else
+                    <div class="text-white font-technic text-lg font-light">
+                        miłosz_gajda &copy;
+                    </div>
+                @endif
+            </div>
         </footer>
     </body>
 </html>

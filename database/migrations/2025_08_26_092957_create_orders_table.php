@@ -22,6 +22,8 @@ return new class extends Migration
             // order shipping data 
             $table->string('name');
             $table->string('surname');
+            $table->string('email');
+            $table->string('phone');
             $table->string('postal_code');
             $table->string('city');
             $table->string('address');
@@ -31,7 +33,7 @@ return new class extends Migration
         Schema::create('order_product', function (Blueprint $table) {
             $table->foreignId('order_id')->constrained();
             $table->foreignId('product_id')->constrained();
-            $table->integer('amount');
+            $table->integer('quantity');
             $table->decimal('price');
         });
 
@@ -44,6 +46,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('company')->nullable();
+            $table->string('nip')->nullable();
             $table->string('postal_code');
             $table->string('city');
             $table->string('address');

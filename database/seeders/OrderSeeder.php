@@ -21,6 +21,8 @@ class OrderSeeder extends Seeder
             'status' => 'pending',
             'name' => 'Miłosz',
             'surname' => 'Jan',
+            'email' => 'gajda.milosz@gmail.com',
+            'phone' => '796-161-492',
             'postal_code' => '54-054',
             'city' => 'Wrocław',
             'address' => 'ul. Daktylowa 5',
@@ -32,13 +34,13 @@ class OrderSeeder extends Seeder
             [
                 'order_id' => 1,
                 'product_id' => 1,
-                'amount' => 1,
+                'quantity' => 1,
                 'price' => 49.99
             ],
             [
                 'order_id' => 1,
                 'product_id' => 2,
-                'amount' => 1,
+                'quantity' => 1,
                 'price' => 39.99
             ]
         ]);
@@ -51,6 +53,7 @@ class OrderSeeder extends Seeder
             'name' => 'Miłosz',
             'surname' => 'Jan',
             'company' => 'MySuperCompany',
+            'nip' => '000-000-00-00',
             'postal_code' => '50-102',
             'city' => 'Wrocław',
             'address' => 'ul. Podwale 1'

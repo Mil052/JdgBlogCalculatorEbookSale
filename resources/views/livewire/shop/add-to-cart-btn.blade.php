@@ -18,7 +18,7 @@ new class extends Component {
         $cart_products = [];
         // Check if user has a cart
         $cartId = request()->cookie('cartId');
-        if ($cartId) {
+        if (isset($cartId)) {
             $cart = Cart::find($cartId);
         }
         // if user already has a cart - add product to cart
@@ -40,10 +40,10 @@ new class extends Component {
         // Set cookie with expiration for 7 days
         Cookie::queue('cartId', $cart->id, 10080);
         
-        $this->dispatch('added-to-cart')->to('shop.cart-link-icon');
+        $this->dispatch('cart-change')->to('shop.cart-link-icon');
     }
 }; ?>
 
-<button type="button" wire:click="addToCart">
-    dodaj do koszyka (product id: {{ $productId }})
+<button type="button" wire:click="addToCart" class="btn-primary">
+    dodaj do koszyka
 </button>
