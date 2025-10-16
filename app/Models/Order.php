@@ -11,9 +11,11 @@ class Order extends Model
 {
     protected $fillable = [
         'user_id',
-        'payment',
+        'payment_type',
+        'payment_id',
+        'payment_status',
         'total_price',
-        'status',
+        'order_status',
         'name',
         'surname',
         'email',
@@ -31,7 +33,7 @@ class Order extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'order_product')->withPivot('amount', 'price')->as('product_data');
+        return $this->belongsToMany(Product::class, 'order_product')->withPivot('quantity', 'price')->as('product_data');
     }
 
     public function invoice(): HasOne

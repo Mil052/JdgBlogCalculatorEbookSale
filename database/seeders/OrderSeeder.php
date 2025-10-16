@@ -16,9 +16,9 @@ class OrderSeeder extends Seeder
         DB::table('orders')->insert([
             'id' => 1,
             'user_id' => 2,
-            'payment' => null,
+            'payment_type' => 'on_delivery',
             'total_price' => 89.98,
-            'status' => 'pending',
+            'order_status' => 'awaiting',
             'name' => 'Miłosz',
             'surname' => 'Jan',
             'email' => 'gajda.milosz@gmail.com',

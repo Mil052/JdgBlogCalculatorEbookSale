@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Order;
 use App\Models\Invoice;
-use App\Models\Product;
 
 class OrderForm extends Form
 {   
@@ -43,8 +42,8 @@ class OrderForm extends Form
 
     // Payment
 
-    #[Validate('required|in:online,traditional')]
-    public string|null $payment;
+    #[Validate('required|in:online,traditional,on_delivery')]
+    public string|null $paymentType;
 
     // Invoice use order data
 
@@ -91,10 +90,10 @@ class OrderForm extends Form
         $order = Order::create([
             'user_id' => Auth::id(),
             // payment
-            'payment' => $this->payment,
+            'payment_type' => $this->paymentType,
             'total_price' => $this->total,
             // status
-            'status' => 'pending',
+            'order_status' => 'awaiting',
             // order shipping data
             'name' => $this->name,
             'surname' => $this->surname,
@@ -134,5 +133,8 @@ class OrderForm extends Form
 
         // Reset form
         $this->reset();
+
+        // Return order
+        return $order;
     }
 }

@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            $table->enum('payment', ['online', 'traditional'])->nullable();
+            $table->enum('payment_type', ['online', 'traditional', 'on_delivery'])->nullable();
+            $table->string('payment_order_id')->nullable();
+            $table->enum('payment_status', ['PENDING', 'COMPLETED', 'CANCELED'])->nullable();
+            $table->string('payment_transaction_id')->nullable();
             $table->decimal('total_price');
             // status
-            $table->enum('status', ['pending', 'accepted', 'completed']);
+            $table->enum('order_status', ['awaiting', 'accepted', 'completed']);
             // order shipping data 
             $table->string('name');
             $table->string('surname');

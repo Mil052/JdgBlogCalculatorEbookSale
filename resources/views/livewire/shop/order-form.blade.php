@@ -17,7 +17,7 @@ new class extends Component {
     public function submitOrder()
     {
         // Create order and invoice
-        $this->form->createOrder();
+        $newOrder = $this->form->createOrder();
         
         // Clear cart
         $this->shoppingCart->cart = null;
@@ -25,8 +25,35 @@ new class extends Component {
         // Notify cart-link-icon
         $this->dispatch('cart-change')->to('shop.cart-link-icon');
 
-        // Redirect to order-completed page
-        return redirect()->route('order-completed');
+        // If payment type is online, create PayU order and redirect to payment page
+        if ($newOrder->payment_type === 'online') {
+            $authorizationToken = PayUAuthorize();
+            $description = 'JDG sklep. Zamówienie nr. ' . $newOrder->id;
+            $products = $newOrder->products()->map(function($product) {
+                return [
+                    'name' => $product->type . " " . $product->name,
+                    'unitPrice' => $product->product_data->price * 100,
+                    'quantity' => $product->product_data->quantity
+                ];
+            })->toArray();
+
+            $payUOrder =  payUCreateOrder(
+                authorizationToken: $authorizationToken,
+                orderId: $newOrder->id,
+                description: $description,
+                products: $products,
+                total: $newOrder->total_price
+            );
+
+            // Save PayU order ID to order data in DB
+            $newOrder->payment_order_id = $payUOrder['orderId'];
+            $newOrder->save();
+
+            return redirect($payUOrder['redirectUri']);
+        }
+
+        // If payment type is 'traditional' or 'on_delivery' redirect to order-completed page
+        return redirect()->route('order-completed', [ 'id' => $newOrder->id ]);
     }
 }; ?>
 
@@ -80,12 +107,16 @@ new class extends Component {
         <label for="payment" class="label">wybierz sposób płatności</label>
         <div class="flex gap-20 justify-center input-secondary">
             <div>
-                <input type="radio" id="payment_online" name="payment" value="online" required class="mx-4" wire:model="form.payment">
+                <input type="radio" id="payment_online" name="payment-type" value="online" required class="mx-4" wire:model="form.paymentType">
                 <label for="payment_online" class="label">płatność online</label>
             </div>
             <div>
-                <input type="radio" id="payment_traditional" name="payment" value="traditional" required class="mx-4" wire:model="form.payment">
+                <input type="radio" id="payment_traditional" name="payment-type" value="traditional" required class="mx-4" wire:model="form.paymentType">
                 <label for="payment_traditional" class="label">tradycyjny przelew</label>
+            </div>
+            <div>
+                <input type="radio" id="payment_on_delivery" name="payment-type" value="on_delivery" required class="mx-4" wire:model="form.paymentType">
+                <label for="payment_on_delivery" class="label">płatność przy odbiorze</label>
             </div>
             <div>@error('form.payment')<span>{{ $message }}</span>@enderror</div>
         </div>
