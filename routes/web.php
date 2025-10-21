@@ -13,10 +13,9 @@ Volt::route('shop', 'shop.products')->name('shop');
 Volt::route('shop/product/{product}', 'shop.product-details')->name('product-details');
 Volt::route('shop/cart', 'shop.shopping-cart')->name('shopping-cart');
 Volt::route('shop/order', 'shop.create-order')->name('create-order');
-Volt::route('shop/order/completed', 'shop.order-completed')->name('order-completed');
+Volt::route('shop/order/payment-status', 'shop.order-payment-status')->name('order-payment-status');
 
 // PayU Notifications
-
 Route::post('shop/payment/notifications', App\Livewire\Actions\PayUNotifications::class)->name('payment-notifications');
 
 // User Dashboard

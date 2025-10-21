@@ -4,6 +4,7 @@ namespace App\Livewire\Actions;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\Order;
 
@@ -42,18 +43,25 @@ class PayUNotifications
     {
         $signatureHeader = request()->header('OpenPayu-Signature');
         $payload = request()->getContent();
+
+        Log::debug('PayU Notification Received: ' . $payload);
+
         $validSignature = $this->checkSignature($signatureHeader, $payload);
 
         if ($validSignature) {
+            Log::debug('PayU Notification Signature is Valid.');
             $requestData = json_decode($payload, true);
+
+            Log::debug('PayU Notification Order status: ' . $requestData['order']['status']);
 
             $order= Order::find($requestData['order']['extOrderId']);
 
-            // If notificationhas been already sent before return status 200
-            if ($order->payment_status === $requestData['order']['status']) {
+            // If order status in DB is "COMPLETED" ignore all notifications and return status 200
+            if ($order->payment_status === 'COMPLETED') {
                 return response()->noContent(200);
             }
-            // If payment status changed update order data
+
+            // Set order payment status based on notification
             $order->payment_status = $requestData['order']['status'];
 
             if ($requestData['order']['status'] === 'COMPLETED') {
@@ -64,6 +72,7 @@ class PayUNotifications
 
             return response()->noContent(200);
         }
+        Log::debug('PayU Notification Signature is Invalid.');
         return abort(403);
     }
 }

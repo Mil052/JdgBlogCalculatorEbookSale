@@ -27,7 +27,8 @@
     "autoload": {
         "files": [
             "app/Helpers/routeNameHelper.php",
-            "app/Helpers/payU.php"
+            "app/Helpers/payU.php",
+            "app/Helpers/taxCalculations.php"
         ],
         "psr-4": {
             "App\\": "app/",

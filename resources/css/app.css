@@ -133,7 +133,7 @@
     .btn-primary {
         font-family: var(--font-technic);
         font-size: var(--text-base);
-        line-height: calc(var(--text-base) * 1.2);
+        line-height: calc(var(--text-base) * 1.5);
         background-color: var(--color-red-brick);
         padding-inline: calc(var(--spacing) * 4);
         padding-block: calc(var(--spacing) * 2);

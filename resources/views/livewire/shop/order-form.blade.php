@@ -4,6 +4,7 @@ use Livewire\Volt\Component;
 use App\Livewire\Forms\OrderForm;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Log;
 
 new class extends Component {
     public OrderForm $form;
@@ -29,20 +30,28 @@ new class extends Component {
         if ($newOrder->payment_type === 'online') {
             $authorizationToken = PayUAuthorize();
             $description = 'JDG sklep. Zamówienie nr. ' . $newOrder->id;
-            $products = $newOrder->products()->map(function($product) {
+            $products = $newOrder->products->map(function($product) {
                 return [
                     'name' => $product->type . " " . $product->name,
                     'unitPrice' => $product->product_data->price * 100,
                     'quantity' => $product->product_data->quantity
                 ];
             })->toArray();
+            $buyer = [
+                'email' => $newOrder->email,
+                'phone' => $newOrder->phone,
+                'firstName' => $newOrder->name,
+                'lastName' => $newOrder->surname,
+                'language' => 'pl'
+            ];
 
-            $payUOrder =  payUCreateOrder(
+            $payUOrder = payUCreateOrder(
                 authorizationToken: $authorizationToken,
                 orderId: $newOrder->id,
                 description: $description,
                 products: $products,
-                total: $newOrder->total_price
+                total: $newOrder->total_price,
+                buyer: $buyer
             );
 
             // Save PayU order ID to order data in DB
@@ -53,7 +62,7 @@ new class extends Component {
         }
 
         // If payment type is 'traditional' or 'on_delivery' redirect to order-completed page
-        return redirect()->route('order-completed', [ 'id' => $newOrder->id ]);
+        return redirect()->route('order-payment-status', [ 'id' => $newOrder->id ]);
     }
 }; ?>
 
@@ -170,5 +179,11 @@ new class extends Component {
             </div>
         </fieldset>
     @endif
-    <button type="submit" class="block ml-auto my-8 btn-primary">zamawiam i płacę</button>
+    <button type="submit" class="block ml-auto my-8 btn-primary">
+        <div wire:loading.remove>zamawiam i płacę</div>
+        <div class="flex gap-3 items-center" wire:loading>
+            <x-icon.spinner />
+            <span>Loading ...</span>
+        </div>
+    </button>
 </form>

@@ -18,28 +18,28 @@ if (! function_exists('PayUAuthorize')) {
 	}
 }
 
-
 if (! function_exists('payUCreateOrder')) {
-    function payUCreateOrder(string $authorizationToken, $orderId, $description, $products, $total): string {
+    function payUCreateOrder(string $authorizationToken, $orderId, $description, $products, $total, $buyer) {
 		$response = Http::withHeaders([
 			'Content-Type' => 'application/json',
 			'Authorization' => 'Bearer ' . $authorizationToken
 		])->post(env('PAYU_ORDER_URL'), [
-			'continueUrl' => route('order-completed', [ 'id' => $orderId ]),
+			'continueUrl' => route('order-payment-status', [ 'id' => $orderId ]),
 			'notifyUrl' => route('payment-notifications'),
 			'customerIp' => request()->ip(),
 			'merchantPosId' => env('PAYU_MERCHANT_POS_ID'),
 			'extOrderId' => $orderId,
 			'description' => $description,
 			'currencyCode' => 'PLN',
-			'totalAmount' => $total * 100, // liczona w groszach
+			'totalAmount' => (int) $total * 100, // liczona w groszach
+			'buyer' => $buyer,
 			'products' => $products
     	]);
 
 		if ($response->failed()) {
 			throw new Exception('Failed to create new order with PayU: ' . $response->body());
 		}
-
+		
 		return $response->json();
 	}
 }

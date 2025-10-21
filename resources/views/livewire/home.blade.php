@@ -19,9 +19,9 @@ new class extends Component {
         <x-hero :title="$newestPost->title" :excerpt="$newestPost->excerpt" :author="$newestPost->author" :created_at="$newestPost->created_at" :id="$newestPost->id"/>
     </section>
     <section>
-        O NAS...
+        <livewire:home.tax-counter />
     </section>
     <section>
-        KALKULATOR ...
+        O NAS...
     </section>
 </div>

@@ -17,7 +17,7 @@ class extends Component {
         $cartId = request()->cookie('cartId');
         if (!isset($cartId)) return;
         $this->shoppingCart = Cart::find($cartId);
-        if (!isset($this->shoppingCart)) return;
+        if (!isset($this->shoppingCart) || !isset($this->shoppingCart->cart)) return;
 
         $cart_products = json_decode($this->shoppingCart->cart, true);
 
