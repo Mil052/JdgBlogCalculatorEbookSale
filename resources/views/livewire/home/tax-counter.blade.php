@@ -14,29 +14,35 @@ new class extends Component {
     public $lumpSumRate = 17; // in percent
 
     #[Computed]
-    public function yearlyRevenueLessExpenses ()
+    public function yearlyRevenue()
     {
-        return ($this->monthlyRevenue - $this->monthlyExpense) * 12;
+        return $this->monthlyRevenue * 12;
+    }
+
+    #[Computed]
+    public function yearlyExpenses()
+    {
+        return $this->monthlyExpense * 12;
     }
 
     #[Computed]
     public function taxes()
     {
-        $taxes = calculateTaxes(
+        return calculateTaxes(
             monthlyRevenue: $this->monthlyRevenue,
             monthlyExpense: $this->monthlyExpense,
             zus: $this->zus,
             lumpSumRate: $this->lumpSumRate,
         );
-
-        return $taxes;
     }
 
 }; ?>
 
-<div>
+<div class="section grid grid-cols-[2fr_3fr] gap-8">
     <div>
-        <form wire:submit.prevent="$refresh">
+        <h2>Kalkulator zarobków</h2>
+        <h3>w zależności od formy opodatkowania</h3>
+        <form x-on:submit.prevent="$wire.$refresh(); $dispatch('updatediagram')">
             <div>
                 <label for="monthly-revenue" class="label">Miesięczne przychody</label>
                 <input type="text" id="monthly-revenue" name="monthly-revenue" class="input-secondary" wire:model="monthlyRevenue">
@@ -68,10 +74,12 @@ new class extends Component {
             <button type="submit">Oblicz</button>
         </form>
     </div>
-    <div>
-        <div>
+    <div class="bg-sea-dark rounded-sm">
+        <div class="mx-6 my-8">
             <x-taxation-summary
-                :yearlyRevenueLessExpenses="$this->yearlyRevenueLessExpenses"
+                id="scale"
+                :yearlyRevenue="$this->yearlyRevenue"
+                :yearlyExpenses="$this->yearlyExpenses"
                 taxation="Skala podatkowa" 
                 :zus="$this->taxes['scale']['zus']"
                 :healthInsurance="$this->taxes['scale']['healthInsurance']"
@@ -79,9 +87,12 @@ new class extends Component {
                 :income="$this->taxes['scale']['income']"
             />
         </div>
-        <div>
+        <hr class="mx-12">
+        <div class="mx-6 my-8">
             <x-taxation-summary
-                :yearlyRevenueLessExpenses="$this->yearlyRevenueLessExpenses"
+                id="flat"
+                :yearlyRevenue="$this->yearlyRevenue"
+                :yearlyExpenses="$this->yearlyExpenses"
                 taxation="Podatek liniowy"
                 :zus="$this->taxes['flat']['zus']"
                 :healthInsurance="$this->taxes['flat']['healthInsurance']"
@@ -89,10 +100,13 @@ new class extends Component {
                 :income="$this->taxes['flat']['income']"
             />
         </div>
-        <div>
+        <hr class="mx-12">
+        <div class="mx-6 my-8">
             <x-taxation-summary
-                :yearlyRevenueLessExpenses="$this->yearlyRevenueLessExpenses"
-                taxation="Podatek liniowy"
+                id="lumpSum"
+                :yearlyRevenue="$this->yearlyRevenue"
+                :yearlyExpenses="$this->yearlyExpenses"
+                taxation="Ryczałt"
                 :zus="$this->taxes['lump-sum']['zus']"
                 :healthInsurance="$this->taxes['lump-sum']['healthInsurance']"
                 :tax="$this->taxes['lump-sum']['tax']"
