@@ -24,7 +24,7 @@
     --color-cream: #faf2e0; /* cream */
     --color-red-brick: #974141; /* red brick */
     --color-sea-dark: #4F7982; /* dark sea */
-    --color-light-blue: #BDE3EB; /* dark sea */
+    --color-light-blue: #BDE3EB; /* light blue */
 
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
@@ -106,7 +106,7 @@
 
     .input-secondary {
         outline-style: none;
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-sm);
         background-color: var(--color-white);
         padding-inline: calc(var(--spacing) * 4);
         padding-block: calc(var(--spacing) * 2);
@@ -142,9 +142,21 @@
         line-height: calc(var(--text-base) * 1.5);
         background-color: var(--color-red-brick);
         padding-inline: calc(var(--spacing) * 4);
-        padding-block: calc(var(--spacing) * 2);
+        padding-block: calc(var(--spacing) * 1);
+        border: 2px solid var(--color-red-brick);
         border-radius: var(--radius-sm);
         color: var(--color-light-grey);
+    }
+
+    .btn-secondary {
+        font-family: var(--font-technic);
+        font-size: var(--text-base);
+        line-height: calc(var(--text-base) * 1.5);
+        padding-inline: calc(var(--spacing) * 4);
+        padding-block: calc(var(--spacing) * 1);
+        border: 2px solid var(--color-red-brick);
+        border-radius: var(--radius-sm);
+        color: var(--color-red-brick);
     }
 
     .page-title {

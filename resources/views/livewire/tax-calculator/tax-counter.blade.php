@@ -35,43 +35,45 @@ new class extends Component {
             lumpSumRate: $this->lumpSumRate,
         );
     }
-
 }; ?>
 
-<div class="section grid grid-cols-[2fr_3fr] gap-8">
+<div class="grid grid-cols-[2fr_3fr] gap-12">
     <div>
-        <h2>Kalkulator zarobków</h2>
-        <h3>w zależności od formy opodatkowania</h3>
-        <form x-on:submit.prevent="$wire.$refresh(); $dispatch('updatediagram')">
-            <div>
-                <label for="monthly-revenue" class="label">Miesięczne przychody</label>
-                <input type="text" id="monthly-revenue" name="monthly-revenue" class="input-secondary" wire:model="monthlyRevenue">
+        <div class="text-coffee text-center mx-4 my-16">
+            <h2 class="heading-base">Kalkulator zarobków</h2>
+            <h3 class="heading-sm">w zależności od formy opodatkowania</h3>
+        </div>
+        <form x-on:submit.prevent="$wire.$refresh(); $dispatch('updatediagram')" class="font-technic">
+            <div class="flex flex-col my-6">
+                <label for="monthly-revenue" class="text-coffee text-2xl pb-4 border-b-2">Miesięczne przychody</label>
+                <input type="text" id="monthly-revenue" name="monthly-revenue" class="bg-light-grey px-4 py-2 text-coffee text-xl my-6 rounded-sm" wire:model="monthlyRevenue">
             </div>
-            <div>
-                <label for="monthlyExpense" class="label">Miesięczne koszty</label>
-                <input type="text" id="monthly-expense" name="monthly-expense" class="input-secondary" wire:model="monthlyExpense">
+            <div class="flex flex-col my-6">
+                <label for="monthly-expense" class="text-coffee text-2xl pb-4 border-b-2">Miesięczne koszty</label>
+                <input type="text" id="monthly-expense" name="monthly-expense" class="bg-light-grey px-4 py-2 text-coffee text-xl my-6 rounded-sm" wire:model="monthlyExpense">
             </div>
-            <div>
-                <label class="label">ZUS</label>
-                <div class="flex gap-4">
+            <div class="my-6">
+                <label class="block text-coffee text-2xl pb-4 border-b-2">ZUS</label>
+                <div class="text-coffee text-lg flex gap-4 justify-between my-6">
                     <div>
                         <input type="radio" id="zus-start-relief" name="zus" value="start-relief" wire:model="zus">
-                        <label for="zus-start-relief">Ulga na start</label>
+                        <label for="zus-start-relief" class="ml-2">Ulga na start</label>
                     </div>
                     <div>
                         <input type="radio" id="zus-reduced" name="zus" value="reduced" wire:model="zus">
-                        <label for="zus-reduced">ZUS obniżony</label>
+                        <label for="zus-reduced" class="ml-2">ZUS obniżony</label>
                     </div>
                     <div>
                         <input type="radio" id="zus-full" name="zus" value="full" wire:model="zus">
-                        <label for="zus-full">Pełny ZUS</label>
+                        <label for="zus-full" class="ml-2">Pełny ZUS</label>
                     </div>
                 </div>
             </div>
-            <div>
-                <livewire:home.lump-sum-select wire:model="lumpSumRate"/>
+            <div class="my-12 flex justify-between items-end text-coffee pb-4 border-b-2">
+                <label class="text-2xl">Ryczałt</label>
+                <livewire:tax-calculator.lump-sum-select wire:model="lumpSumRate"/>
             </div>
-            <button type="submit">Oblicz</button>
+            <button type="submit" class="btn-primary">OBLICZ DOCHÓD</button>
         </form>
     </div>
     <div class="bg-sea-dark rounded-sm">
