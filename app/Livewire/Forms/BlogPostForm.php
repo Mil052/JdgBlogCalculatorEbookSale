@@ -12,13 +12,9 @@ class BlogPostForm extends Form
 
     #[Validate('required|min:12')]
     public $title;
-
     public $excerpt;
-
     public $content;
-
     public $author;
-
     public $publish = false;
 
     public function setBlogPostFormValues(BlogPost $post)
@@ -39,6 +35,6 @@ class BlogPostForm extends Form
     public function save()
     {
         $this->validate();
-        $this->post->update($this->only(['title', 'excerpt', 'content', 'author', 'publish' ]));
+        $this->post->update($this->only(['title', 'excerpt', 'content', 'author', 'publish']));
     }
 }

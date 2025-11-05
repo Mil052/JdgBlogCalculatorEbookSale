@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('type');
-            $table->text('description');
-            $table->string('excerpt');
-            $table->string('image');
-            $table->decimal('price');
+            $table->string('type')->nullable();
+            $table->text('description')->nullable();
+            $table->string('excerpt')->nullable();
+            $table->string('image')->nullable();
+            $table->decimal('price')->nullable();
+            $table->boolean('available')->default(false);
         });
     }
 

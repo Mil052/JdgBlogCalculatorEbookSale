@@ -16,12 +16,13 @@ class ProductSeeder extends Seeder
         Db::table('products')->insert([
             [
                 'id' => 1,
-                'name' => 'Jednoosobowa Działalność Gospodarcza od podstaw',
+                'name' => 'Dwuosobowa Działalność Gospodarcza od podstaw',
                 'type' => 'książka',
                 'description' => '„Jednoosobowa Działalność Gospodarcza od podstaw” to praktyczny przewodnik dla osób, które chcą rozpocząć własną działalność gospodarczą w Polsce. Książka krok po kroku wyjaśnia, czym jest jednoosobowa firma, jak ją zarejestrować, jakie obowiązki podatkowe i formalne wiążą się z jej prowadzeniem oraz jakie są korzyści i ryzyka tego rozwiązania. Autor w prosty sposób omawia wybór formy opodatkowania, kwestie związane z ZUS, prowadzeniem księgowości oraz podstawami marketingu i zarządzania finansami. To kompendium wiedzy skierowane zarówno do początkujących przedsiębiorców, jak i osób rozważających przejście na samozatrudnienie.',
                 'excerpt' => 'Praktyczny przewodnik dla osób, które chcą rozpocząć własną działalność gospodarczą w Polsce',
-                'image' => 'jdg_od_podstaw.webp',
+                'image' => '2dg_przewodnik.webp',
                 'price' => 49.99,
+                'available' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -33,6 +34,7 @@ class ProductSeeder extends Seeder
                 'excerpt' => 'Każdego roku przepisy prawne i podatkowe ulegają istotnym zmianom, które bezpośrednio wpływają na codzienne funkcjonowanie przedsiębiorców. Niniejsza książka powstała, aby w przystępny i praktyczny sposób zaprezentować najnowsze regulacje dotyczące samozatrudnienia',
                 'image' => 'jdg_poradnik.webp',
                 'price' => 39.99,
+                'available' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

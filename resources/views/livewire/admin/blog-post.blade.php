@@ -4,7 +4,7 @@ use Livewire\Volt\Component;
 use App\Models\BlogPost;
 
 new
-#[Layout('components.layouts.user')]
+#[Layout('components.layouts.admin')]
 #[Title('JDG Panel Administratora')]
 class extends Component {
     public BlogPost $post;

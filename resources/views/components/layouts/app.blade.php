@@ -4,7 +4,7 @@
         @include('partials.head')
     </head>
     <body class="relative min-h-screen grid grid-rows-[auto_1fr_auto]">
-        <header class="bg-white">
+        <header class="bg-white border-b border-light-coffee">
             <nav class="flex justify-between items-center px-12 py-6 max-w-7xl mx-auto">
                 <h1 class="font-logo italic text-4xl/9 text-coffee">
                     <a href="/">moja JDG</a>
@@ -24,8 +24,8 @@
                     <li>
                         <a href="{{ Auth::check() ? '/settings/profile' : '/login' }}" wire:navigate>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="7" r="4" stroke="black" stroke-width="1.5"/>
-                                <path d="M3 20C5.19728 17.545 8.39043 16 11.9444 16C15.4984 16 18.6916 17.545 20.8889 20" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                                <circle cx="12" cy="7" r="4" stroke="#785f5f" stroke-width="1.5"/>
+                                <path d="M3 20C5.19728 17.545 8.39043 16 11.9444 16C15.4984 16 18.6916 17.545 20.8889 20" stroke="#785f5f" stroke-width="1.5" stroke-linecap="round"/>
                             </svg>
                         </a>
                     </li>
@@ -38,13 +38,13 @@
         <main class="max-w-7xl w-full mx-auto">
             {{ $slot }}
         </main>
-        <footer class=" bg-coffee">
+        <footer class="bg-white border-t border-light-coffee">
             <div class="flex items-center justify-between max-w-7xl mx-auto px-12 py-4">
-                <h1 class="font-logo italic text-2xl/6 text-white">
+                <h1 class="font-logo italic text-2xl/6 text-coffee">
                     <a href="/">moja JDG</a>
                 </h1>
                 <nav class="flex justify-between items-center">
-                    <ul class="flex gap-8 text-white font-technic text-lg font-light">
+                    <ul class="flex gap-8 text-coffee font-technic text-lg">
                         <li>
                             <a href="/blog" wire:navigate>Wszystko o JDG | Blog</a>
                         </li>
@@ -57,11 +57,11 @@
                     </ul>
                 </nav>
                 @if (Auth::user() && Auth::user()->is_admin)
-                    <a href="/admin" wire:navigate text-white font-technic text-lg font-light>
+                    <a href="/admin" wire:navigate class="text-coffee font-technic text-lg">
                         panel administratora
                     </a>
                 @else
-                    <div class="text-white font-technic text-lg font-light">
+                    <div class="text-coffee font-technic text-lg">
                         miłosz_gajda &copy;
                     </div>
                 @endif

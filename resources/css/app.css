@@ -95,6 +95,7 @@
     }
 
     .input {
+        outline-style: none;
         border: 1px solid var(--color-coffee);
         border-radius: var(--radius-md);
         background-color: var(--color-light-grey);
@@ -157,6 +158,17 @@
         border: 2px solid var(--color-red-brick);
         border-radius: var(--radius-sm);
         color: var(--color-red-brick);
+    }
+
+    .btn-disabled {
+        font-family: var(--font-technic);
+        font-size: var(--text-base);
+        line-height: calc(var(--text-base) * 1.5);
+        padding-inline: calc(var(--spacing) * 4);
+        padding-block: calc(var(--spacing) * 1);
+        border: 2px solid var(--color-gray-300);
+        border-radius: var(--radius-sm);
+        color: var(--color-gray-300);
     }
 
     .page-title {

@@ -20,10 +20,10 @@
                             <a href="/admin" wire:navigate>Admin Panel</a>
                         </li>
                         <li>
-                            <a href="/admin/blog" wire:navigate>Blog</a>
+                            <a href="/admin/products" wire:navigate>Produkty</a>
                         </li>
                         <li>
-                            <a href="/admin/blog/post/create" wire:navigate>Nowy Post</a>
+                            <a href="/admin/blog" wire:navigate>Blog</a>
                         </li>
                     </ul>
                 </nav>
@@ -49,11 +49,12 @@
                                     <a href="/admin" wire:navigate>Admin Panel</a>
                                 </li>
                                 <li class="my-3 pt-2 pb-2 hover:border-b-2 hover:pb-[6px]">
-                                    <a href="/admin/blog" wire:navigate>Blog</a>
+                                    <a href="/admin/products" wire:navigate>Produkty</a>
                                 </li>
                                 <li class="my-3 pt-2 pb-2 hover:border-b-2 hover:pb-[6px]">
-                                    <a href="/admin/blog/post/create" wire:navigate>Nowy Post</a>
+                                    <a href="/admin/blog" wire:navigate>Blog</a>
                                 </li>
+
                             </ul>
                         </nav>
                     </div>

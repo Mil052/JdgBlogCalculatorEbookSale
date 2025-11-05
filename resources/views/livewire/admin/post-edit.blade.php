@@ -92,31 +92,31 @@ class extends Component {
     }
 }; ?>
 
-<section class="h-full" wire:submit="save">
+<section class="h-full">
     {{-- POST --}}
     <div class="bg-light-grey">
         <div class="area">
             <h1 class="heading-base ml-6 sm:ml-24">{{ $title }}</h1>
             <hr class="my-8">
-            <form class="flex flex-col gap-4">
+            <form class="flex flex-col gap-4" wire:submit="save">
                 <div class="flex flex-col gap-2">
                     <label for="post_title" class="label">Tytuł</label>
-                    <input type="text" wire:model="form.title" id="post_title" class="input">
+                    <input type="text" wire:model="form.title" id="post_title" class="input-secondary">
                     @error('form.title')
                         <div class="text-orange-800">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="post_content" class="label">Treść</label>
-                    <textarea rows="16" wire:model="form.content" id="post_content" class="input"></textarea>
+                    <textarea rows="16" wire:model="form.content" id="post_content" class="input-secondary"></textarea>
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="post_excerpt" class="label">Skrót</label>
-                    <textarea rows="5" wire:model="form.excerpt" id="post_excerpt" class="input"></textarea>
+                    <textarea rows="5" wire:model="form.excerpt" id="post_excerpt" class="input-secondary"></textarea>
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="post_author" class="label">Autor</label>
-                    <input type="text" wire:model="form.author" id="post_author" class="input">
+                    <input type="text" wire:model="form.author" id="post_author" class="input-secondary">
                 </div>
                 <div class="flex flex-col sm:flex-row justify-between">
                     <div class="mt-8">
@@ -129,8 +129,8 @@ class extends Component {
                         </label>
                     </div>
                     <div class="mt-8 self-end">
-                        <button type="submit" class="btn">Zapisz</button>
-                        <button type="submit" class="btn ml-6" wire:click="saveAndClose">
+                        <button type="submit" class="btn-primary">Zapisz</button>
+                        <button type="button" class="btn-secondary ml-6" wire:click="saveAndClose">
                             Zapisz i zamknij
                         </button>
                     </div>
@@ -148,7 +148,9 @@ class extends Component {
                 @foreach ($assets as $asset)
                     <figure class="relative">
                         <img src="{{ '/storage/blog_posts_assets/' . $asset->file_name }}" alt="{{ $asset->alt_text }}" class="h-40 sm:h-50 w-40 sm:w-50 object-cover rounded-md shadow-[3px_3px_9px_#00000080]">
-                        <figcaption class="text-xs sm:text-sm font-technic mt-2">{{ $asset->file_name }}</figcaption>
+                        <figcaption class="text-xs sm:text-sm font-technic mt-2">
+                            {{ $asset->file_name }}
+                        </figcaption>
                         <div x-data="{
                             tag: '{{ $this->generateImageTag($asset) }}',
                             animation: $refs.tick.getAnimations()[0]
@@ -191,7 +193,9 @@ class extends Component {
                         <input type="text" id="img_source" class="input" wire:model="imageSource">
                     </div>
                     {{-- Submit form --}}
-                    <button type="submit" class="mt-3 md:mt-auto btn self-end">Dodaj zdjęcie</button>
+                    <button type="submit" class="mt-3 md:mt-auto btn self-end">
+                        Dodaj zdjęcie
+                    </button>
                 </div>
             </form>
         </div>

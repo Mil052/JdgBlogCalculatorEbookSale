@@ -41,7 +41,16 @@ class extends Component {
 }; ?>
 
 <section class="area">
-    <h1 class="heading-base">BLOG POST LIST</h1>
+    <div class="flex justify-between items-center">
+        <h1 class="heading-base">BLOG - LISTA POSTÓW</h1>
+        <a href="/admin/blog/post/create" wire:navigate class="flex gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 1V23" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M1 12H23" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>            
+            <span>Nowy Post</span>
+        </a>
+    </div>
     <hr class="my-8">
     <ul>
         @foreach ($this->posts as $post)
@@ -59,7 +68,7 @@ class extends Component {
                     <a href="/admin/blog/post/{{ $post->id }}/edit">
                         <x-icon.pen />
                     </a>
-                    <x-post-delete-btn :title="$post->title" @delete="$wire.deletePost({{ $post->id }})"/>
+                    <x-confirm-delete-btn :title="$post->title" type="post" :id="$post->id" @delete="$wire.deletePost({{ $post->id }})"/>
                 </div>
             </li>
         @endforeach

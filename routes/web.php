@@ -30,9 +30,14 @@ Route::middleware(['auth'])->group(function () {
 // Admin dashboard
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
     Volt::route('/', 'admin.dashboard')->name('dashboard');
+    // Blog
     Volt::route('blog', 'admin.blog')->name('blog');
     Volt::route('blog/post/create', 'admin.post-edit')->name('post-create');
     Volt::route('blog/post/{id}/edit', 'admin.post-edit')->name('post-update');
+    // Products
+    Volt::route('products', 'admin.products.products-list')->name('products-list');
+    Volt::route('products/product/create', 'admin.products.product-edit')->name('product-create');
+    Volt::route('products/product/{id}/edit', 'admin.products.product-edit')->name('product-update');
 });
 
 require __DIR__.'/auth.php';

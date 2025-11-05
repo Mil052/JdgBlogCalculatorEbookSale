@@ -76,7 +76,7 @@ new class extends Component {
             <button type="submit" class="btn-primary">OBLICZ DOCHÓD</button>
         </form>
     </div>
-    <div class="bg-sea-dark rounded-sm">
+    <div class="bg-coffee rounded-sm">
         <div class="mx-6 my-8">
             <x-taxation-summary
                 id="scale"
