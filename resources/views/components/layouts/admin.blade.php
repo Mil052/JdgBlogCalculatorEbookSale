@@ -25,6 +25,9 @@
                         <li>
                             <a href="/admin/blog" wire:navigate>Blog</a>
                         </li>
+                        <li>
+                            <a href="/admin/orders" wire:navigate>Zamówienia</a>
+                        </li>
                     </ul>
                 </nav>
                 {{-- Mobile Navigation --}}
@@ -64,14 +67,14 @@
         <main>
             {{ $slot }}
         </main>
-        <footer class="bg-coffee">
-            <div class="max-w-7xl mx-auto px-6 sm:px-12 py-6">
+        <footer class="bg-white">
+            <nav class="max-w-7xl mx-auto px-6 sm:px-12 py-6">
                 <ul class="flex gap-12 items-center">
                     <li>
-                        <a href="{{ route('home') }}" wire:navigate>strona główna</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.dashboard') }}" wire:navigate>panel administratora</a>
+                        <a href="{{ route('home') }}" wire:navigate>
+                            <span>strona główna</span>
+                            <span class="ml-1 text-xl/6">&#8594;</span>
+                        </a>
                     </li>
                     <li class="ml-auto">
                         <!-- Logout button -->
@@ -83,7 +86,7 @@
                         </form>
                     </li>
                 </ul>
-            </div>
+            </nav>
         </footer>
     </body>
 </html>

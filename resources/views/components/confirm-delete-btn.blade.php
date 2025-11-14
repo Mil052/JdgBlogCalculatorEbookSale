@@ -5,7 +5,7 @@
     <button type="button" @click="open = true" class="block">
         <x-icon.bin />
     </button>
-    <div x-show="open" class="fixed inset-0 z-10 bg-coffee/80 p-12 flex justify-center items-center">
+    <div x-cloak x-show="open" class="fixed inset-0 z-10 bg-coffee/80 p-12 flex justify-center items-center">
         <div class="bg-white p-12 sm:w-120">
             <h1 class="font-technic text-lg">Usuń {{ $type }}</h1>
             <hr class="my-4">

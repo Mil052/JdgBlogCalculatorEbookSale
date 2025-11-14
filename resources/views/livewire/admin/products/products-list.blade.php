@@ -39,28 +39,64 @@ class extends Component {
     <hr class="my-8">
     <ul>
         @foreach ($this->products as $product)
-            <li wire:key="{{ $product->id }}" class="group flex my-8 gap-12 justify-between items-center">
-                <div class="flex gap-6">
+            <li wire:key="{{ $product->id }}" class="group flex my-8 gap-16" x-data="{showDetails: false}">
+                <div class="grow flex gap-6">
                     <div class="min-w-7">
                         <div class="w-3 h-full group-hover:w-7 transition-[width] duration-300 bg-coffee"></div>
                     </div>
-                    <div class="h-15">
+                    <div class="h-15 min-w-10">
                         <img src="{{ '/storage/products_assets/' . $product->image }}" alt="product preview" class="h-full">
                     </div>
-                    <div class="flex flex-col justify-between">
-                        <a href="{{ '/admin/products/' . $product->id }}">
-                            <h3 class="inline font-paragraph text-lg font-normal mr-2">
-                                {{ $product->name }}
-                            </h3>
-                        </a>
-                        <div class="text-sm">
-                            <span>typ produktu:&nbsp;{{ $product->type }}</span>
-                            <span class="mx-3">|</span>
-                            <span class="text-sm">produkt&nbsp;id:&nbsp;{{ $product->id }}</span>
+                    <div class="grow flex flex-col gap-3">
+                        <h3 class="font-paragraph text-lg font-normal mr-2">
+                            {{ $product->name }}
+                        </h3>
+                        {{-- Product description --}}
+                        <dl x-cloak x-show="showDetails" class="text-sm">
+                            <div class="my-2">
+                                <dt class="text-coffee">skrócony opis</dt>
+                                <dd class="ml-3">
+                                    {{ !empty($product->excerpt) ? $product->excerpt : '-'  }}
+                                </dd>
+                            </div>
+                            <div class="my-2">
+                                <dt class="text-coffee">opis</dt>
+                                <dd class="ml-3">
+                                    {{ !empty($product->description) ? $product->description : '-' }}
+                                </dd>
+                            </div>
+                        </dl>
+                        <div class="flex gap-2 text-sm">
+                            <a href="{{ '/shop/product/' . $product->id }}" class="text-sea-dark">
+                                strona produktu
+                            </a>
+                            <span>|</span>
+                            <dl class="flex">
+                                <dt>produkt id:</dt>
+                                <dd class="ml-1">{{ $product->id }}</dd>
+                            </dl>
+                            <span>|</span>
+                            <dl class="flex">
+                                <dt>typ:</dt>
+                                <dd class="ml-1">{{ $product->type }}</dd>
+                            </dl>
+                            <span>|</span>
+                            <dl class="flex">
+                                <dt>cena:</dt>
+                                <dd class="ml-1">{{ $product->price }} zł</dd>
+                            </dl>
+                            <span>|</span>
+                            <button type="button" x-on:click="showDetails = !showDetails" class="flex text-sea-dark items-center gap-2">
+                                <span x-text="showDetails ? 'ukryj szczegóły' : 'pokaż szczegóły'"></span>
+                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" :class="showDetails && 'rotate-180'">
+                                    <path d="M1 2L3.5 4L6 6L11 2" stroke="#4F7982" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div class="ml-auto flex gap-6">
+                {{-- Edit and Delete Product buttons --}}
+                <div class="h-15 flex gap-6 items-center">
                     <a href="/admin/products/product/{{ $product->id }}/edit">
                         <x-icon.pen />
                     </a>
@@ -70,4 +106,3 @@ class extends Component {
         @endforeach
     </ul>
 </section>
-

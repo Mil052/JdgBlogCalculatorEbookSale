@@ -20,7 +20,7 @@ class extends Component {
 <section>
     <div class="bg-white pl-35 pr-8 py-20 flex justify-between items-end">
         <h1 class="page-title">Nasze książki</h1>
-        <a href="/shop" class="flex gap-6 items-end">
+        <a href="/shop" class="flex gap-6 items-end text-sea-dark">
             <span>zobacz wszystkie</span>
             <x-icon.sqr-arrow-up class="w-8 h-8"/>
         </a>

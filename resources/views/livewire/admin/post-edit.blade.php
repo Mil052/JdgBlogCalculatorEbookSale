@@ -96,7 +96,13 @@ class extends Component {
     {{-- POST --}}
     <div class="bg-light-grey">
         <div class="area">
-            <h1 class="heading-base ml-6 sm:ml-24">{{ $title }}</h1>
+            <header class="flex justify-between">
+                <h1 class="heading-base ml-6 sm:ml-24">{{ $title }}</h1>
+                <a href="/admin/blog" class="flex gap-4 items-end text-sea-dark">
+                    <span>lista postów</span>
+                    <x-icon.sqr-arrow-up class="w-6 h-6"/>
+                </a>
+            </header>
             <hr class="my-8">
             <form class="flex flex-col gap-4" wire:submit="save">
                 <div class="flex flex-col gap-2">

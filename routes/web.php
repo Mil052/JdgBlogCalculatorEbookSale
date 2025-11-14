@@ -38,6 +38,9 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Volt::route('products', 'admin.products.products-list')->name('products-list');
     Volt::route('products/product/create', 'admin.products.product-edit')->name('product-create');
     Volt::route('products/product/{id}/edit', 'admin.products.product-edit')->name('product-update');
+    // Orders
+    Volt::route('orders', 'admin.orders.orders-list')->name('orders-list');
+    Volt::route('orders/order/{id}', 'admin.orders.order-details')->name('order-details');
 });
 
 require __DIR__.'/auth.php';

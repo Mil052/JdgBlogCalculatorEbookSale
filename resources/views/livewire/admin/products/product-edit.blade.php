@@ -58,12 +58,24 @@ class extends Component {
         $this->form->saveProduct($this->product);
         $this->image = null;
     }
+    
+    public function saveAndClose()
+    {
+        $this->save();
+        $this->redirect('/admin/products');
+    }
 }; ?>
 
 <section class="h-full">
     <div class="bg-light-grey">
         <div class="area">
-            <h1 class="heading-base ml-6 sm:ml-24">{{ $pageTitle }}</h1>
+            <header class="flex justify-between">
+                <h1 class="heading-base ml-6 sm:ml-24">{{ $pageTitle }}</h1>
+                <a href="/admin/products" class="flex gap-4 items-end text-sea-dark">
+                    <span>lista produktów</span>
+                    <x-icon.sqr-arrow-up class="w-6 h-6"/>
+                </a>
+            </header>
             <hr class="my-8">
             <form class="grid grid-cols-2 gap-4" wire:submit="save">
                 <div class="col-span-full flex flex-col gap-2">
@@ -115,8 +127,11 @@ class extends Component {
                     </label>
                 </div>
                 {{-- Submit button --}}
-                <div class="h-9 mt-17">
-                    <button type="submit" class="block ml-auto btn-primary">Zapisz</button>
+                <div class="h-9 mt-17 flex gap-6 justify-end">
+                    <button type="submit" class="btn-primary">Zapisz</button>
+                    <button type="button" class="btn-secondary" wire:click="saveAndClose">
+                        Zapisz i zamknij
+                    </button>
                 </div>
             </form>
         </div>

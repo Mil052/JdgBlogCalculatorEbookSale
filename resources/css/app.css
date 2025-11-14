@@ -11,6 +11,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+    --breakpoint-xs: 30rem;
+
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-logo: 'Besley', serif;
     --font-title: 'Instrument Serif', serif;
@@ -125,8 +127,8 @@
     .area {
         margin-inline: auto;
         max-width: var(--container-7xl);
-        padding-inline: calc(var(--spacing) * 6);
-        padding-block: calc(var(--spacing) * 12);
+        padding-inline: calc(var(--spacing) * 3);
+        padding-block: calc(var(--spacing) * 6);
     }
 
     .btn {
@@ -229,6 +231,13 @@
         font-family: var(--font-technic);
         font-size: var(--text-sm);
         line-height: calc(var(--text-sm) * 1.2);
+    }
+
+    @media (width >= 30rem) {
+        .area {
+            padding-inline: calc(var(--spacing) * 6);
+            padding-block: calc(var(--spacing) * 12);
+        }
     }
 
     @media (width >= 40rem) {
