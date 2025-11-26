@@ -39,7 +39,7 @@ new class extends Component {
     }
 }; ?>
 
-<div class="bg-light-blue p-8 relative rounded-sm">
+<div class="bg-light-blue px-4 xs:px-8 py-8 relative rounded-sm">
     <h3 class="font-paragraph text-coffee text-3xl text-center">Napisz do nas</h3>
     <form wire:submit="sendEmailMessage">
         <div class="flex flex-col gap-1 my-4">

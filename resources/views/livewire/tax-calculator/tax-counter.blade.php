@@ -37,24 +37,24 @@ new class extends Component {
     }
 }; ?>
 
-<div class="grid grid-cols-[2fr_3fr] gap-12">
+<div class="grid md:grid-cols-[2fr_3fr] gap-12 md:gap-4 lg:gap-12">
     <div>
-        <div class="text-coffee text-center mx-4 my-16">
+        <div class="text-coffee text-center my-8 md:my-16">
             <h2 class="heading-base">Kalkulator zarobków</h2>
             <h3 class="heading-sm">w zależności od formy opodatkowania</h3>
         </div>
-        <form x-on:submit.prevent="$wire.$refresh(); $dispatch('updatediagram')" class="font-technic">
-            <div class="flex flex-col my-6">
-                <label for="monthly-revenue" class="text-coffee text-2xl pb-4 border-b-2">Miesięczne przychody</label>
-                <input type="text" id="monthly-revenue" name="monthly-revenue" class="bg-light-grey px-4 py-2 text-coffee text-xl my-6 rounded-sm" wire:model="monthlyRevenue">
+        <form x-on:submit.prevent="$wire.$refresh(); $dispatch('updatediagram')" class="@container font-technic">
+            <div class="flex flex-col my-3 sm:my-6">
+                <label for="monthly-revenue" class="text-coffee text-lg xs:text-xl sm:text-2xl pb-2 sm:pb-4 border-b-2">Miesięczne przychody</label>
+                <input type="text" id="monthly-revenue" name="monthly-revenue" class="bg-light-grey px-4 py-2 text-coffee xs:text-xl my-3 sm:my-6 rounded-sm" wire:model="monthlyRevenue">
             </div>
-            <div class="flex flex-col my-6">
-                <label for="monthly-expense" class="text-coffee text-2xl pb-4 border-b-2">Miesięczne koszty</label>
-                <input type="text" id="monthly-expense" name="monthly-expense" class="bg-light-grey px-4 py-2 text-coffee text-xl my-6 rounded-sm" wire:model="monthlyExpense">
+            <div class="flex flex-col my-3 sm:my-6">
+                <label for="monthly-expense" class="text-coffee text-lg xs:text-xl sm:text-2xl pb-2 sm:pb-4 border-b-2">Miesięczne koszty</label>
+                <input type="text" id="monthly-expense" name="monthly-expense" class="bg-light-grey px-4 py-2 text-coffee xs:text-xl my-3 sm:my-6 rounded-sm" wire:model="monthlyExpense">
             </div>
-            <div class="my-6">
-                <label class="block text-coffee text-2xl pb-4 border-b-2">ZUS</label>
-                <div class="text-coffee text-lg flex gap-4 justify-between my-6">
+            <div class="my-3 sm:my-6">
+                <label class="block text-coffee text-lg xs:text-xl sm:text-2xl pb-2 sm:pb-4 border-b-2">ZUS</label>
+                <div class="text-coffee xs:text-lg flex flex-col @md:flex-row gap-x-4 gap-y-2 justify-between my-3 sm:my-6">
                     <div>
                         <input type="radio" id="zus-start-relief" name="zus" value="start-relief" wire:model="zus">
                         <label for="zus-start-relief" class="ml-2">Ulga na start</label>
@@ -69,15 +69,15 @@ new class extends Component {
                     </div>
                 </div>
             </div>
-            <div class="my-12 flex justify-between items-end text-coffee pb-4 border-b-2">
-                <label class="text-2xl">Ryczałt</label>
+            <div class="my-8 sm:my-12 flex justify-between items-end text-coffee pb-2 sm:pb-4 border-b-2">
+                <label class="text-lg xs:text-xl sm:text-2xl">Ryczałt</label>
                 <livewire:tax-calculator.lump-sum-select wire:model="lumpSumRate"/>
             </div>
             <button type="submit" class="btn-primary">OBLICZ DOCHÓD</button>
         </form>
     </div>
     <div class="bg-coffee rounded-sm">
-        <div class="mx-6 my-8">
+        <div class="m-6 md:m-8">
             <x-taxation-summary
                 id="scale"
                 :yearlyRevenue="$this->yearlyRevenue"
@@ -90,7 +90,7 @@ new class extends Component {
             />
         </div>
         <hr class="mx-12">
-        <div class="mx-6 my-8">
+        <div class="m-6 md:m-8">
             <x-taxation-summary
                 id="flat"
                 :yearlyRevenue="$this->yearlyRevenue"
@@ -103,7 +103,7 @@ new class extends Component {
             />
         </div>
         <hr class="mx-12">
-        <div class="mx-6 my-8">
+        <div class="m-6 md:m-8">
             <x-taxation-summary
                 id="lumpSum"
                 :yearlyRevenue="$this->yearlyRevenue"

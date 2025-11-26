@@ -14,7 +14,7 @@ new class extends Component {
     }
 }; ?>
 
-<form class="relative bg-white flex justify-between min-w-3xs px-4 py-1" x-data="{open: false}">
+<form class="relative bg-white flex justify-between min-w-50 px-4 py-1" x-data="{open: false}">
     <h3>{{ $statusTypes[$orderStatus] }}</h3>
     <button type="button" @click="open = !open">
         <svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{ 'rotate-180': open }">

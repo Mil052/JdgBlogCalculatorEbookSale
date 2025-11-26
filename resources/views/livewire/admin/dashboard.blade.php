@@ -33,7 +33,6 @@ class extends Component {
         $this->products = Product::limit(3)->get();
         $this->posts = BlogPost::latest()->limit(3)->get();
     }
-
 }; ?>
 
 <section class="h-full">
@@ -130,7 +129,7 @@ class extends Component {
             <div class="col-span-full bg-white p-4 rounded-sm min-h-70 shadow-[6px_6px_6px_#00000040]">
                 <div class="flex justify-between items-end">
                     <h3 class="heading-sm">BLOG</h3>
-                    <a href="/admin/products" class="text-sea-dark flex gap-2 items-center">
+                    <a href="/admin/blog" class="text-sea-dark flex gap-2 items-center">
                         <span>wyświetl wszystkie</span>
                         <x-icon.sqr-arrow-down class="w-5 h-5 mb-1" />
                     </a>

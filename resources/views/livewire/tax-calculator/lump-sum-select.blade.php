@@ -11,7 +11,7 @@ new class extends Component {
 }; ?>
 
 <div x-data="{open: false}" class="relative">
-    <label class="text-lg">
+    <label class="xs:text-lg">
             <span class="mr-1">Stawka</span>
             <span x-text="$wire.lumpSumRate"></span>
             <span>(%)</span>
@@ -21,7 +21,7 @@ new class extends Component {
                 </svg>
             </button>
     </label>
-    <div x-cloak x-show="open" class="absolute z-20 bg-light-grey p-4 w-full top-12 rounded-sm">
+    <div x-cloak x-show="open" class="absolute z-20 bg-light-grey p-4 w-full top-10 sm:top-12 rounded-sm">
         @foreach($this->lumpSumRates as $rate)
             <div wire:key="{{ $loop->index }}" @click="open = false" class="my-1">
                 <input type="radio" id="lump-rate-{{ $rate }}" value="{{ $rate }}" wire:model="lumpSumRate">

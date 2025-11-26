@@ -72,12 +72,12 @@ class extends Component {
             <header class="flex justify-between">
                 <h1 class="heading-base ml-6 sm:ml-24">{{ $pageTitle }}</h1>
                 <a href="/admin/products" class="flex gap-4 items-end text-sea-dark">
-                    <span>lista produktów</span>
-                    <x-icon.sqr-arrow-up class="w-6 h-6"/>
+                    <span class="hidden xs:inline">lista produktów</span>
+                    <x-icon.sqr-arrow-up class="w-6 h-6 mb-1"/>
                 </a>
             </header>
             <hr class="my-8">
-            <form class="grid grid-cols-2 gap-4" wire:submit="save">
+            <form class="grid sm:grid-cols-2 gap-4" wire:submit="save">
                 <div class="col-span-full flex flex-col gap-2">
                     <label for="product-name" class="label">Nazwa</label>
                     <input type="text" id="product-name" class="input-secondary" wire:model="form.name">
@@ -99,7 +99,7 @@ class extends Component {
                     <textarea id="product-excerpt" class="input-secondary" rows="3" wire:model="form.excerpt"></textarea>
                 </div>
                 {{-- Upload product image --}}
-                <div class="row-span-3 flex flex-col gap-2">
+                <div class="sm:row-span-3 flex flex-col gap-2">
                     <label for="upload_image" class="label">Dodaj zdjęcie produktu</label>
                     <div class="relative overflow-hidden border border-coffee rounded-md h-40 sm:h-50 w-40 sm:w-50">
                         <input type="file" id="upload_image" wire:model="image" class="invisible absolute w-full">

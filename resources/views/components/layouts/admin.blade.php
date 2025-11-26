@@ -5,7 +5,7 @@
     </head>
     <body class="bg-light-grey min-h-screen grid grid-rows-[auto_1fr_auto]">
         <header class="bg-white">
-            <div class="relative max-w-7xl mx-auto flex justify-between items-center px-6 sm:px-12 py-6">
+            <div class="relative max-w-7xl mx-auto flex justify-between items-center px-6 md:px-12 py-6">
                 <a href="/">
                     <h1 class="font-logo italic text-2xl sm:text-3xl">moja JDG</h1>
                     <div class="font-technic text-xs sm:text-sm">
@@ -15,7 +15,7 @@
                 </a>
                 {{-- Screen navigation --}}
                 <nav class="hidden sm:block">
-                    <ul class="flex gap-8">
+                    <ul class="flex gap-6 md:gap-8">
                         <li>
                             <a href="/admin" wire:navigate>Admin Panel</a>
                         </li>
@@ -57,7 +57,9 @@
                                 <li class="my-3 pt-2 pb-2 hover:border-b-2 hover:pb-[6px]">
                                     <a href="/admin/blog" wire:navigate>Blog</a>
                                 </li>
-
+                                <li class="my-3 pt-2 pb-2 hover:border-b-2 hover:pb-[6px]">
+                                    <a href="/admin/orders" wire:navigate>Zamówienia</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -68,7 +70,7 @@
             {{ $slot }}
         </main>
         <footer class="bg-white">
-            <nav class="max-w-7xl mx-auto px-6 sm:px-12 py-6">
+            <nav class="max-w-7xl mx-auto px-6 md:px-12 py-6">
                 <ul class="flex gap-12 items-center">
                     <li>
                         <a href="{{ route('home') }}" wire:navigate>

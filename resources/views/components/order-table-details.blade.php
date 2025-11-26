@@ -1,14 +1,14 @@
 @props([
     'order',
     'orderStatusTypes' => [
-        'awaiting' => 'oczekujące (przetwarzanie zamówienia)',
-        'accepted' => 'zamówienie przyjęte do realizacji', 
+        'awaiting' => 'oczekujące (przetwarzanie)',
+        'accepted' => 'przyjęte do realizacji', 
         'completed' => 'zamówienie zrealizowane',
         'canceled' => 'anulowane'
     ],
     'paymentTypes' => [
         'online' => 'PayU (płatność online)',
-        'traditional' => 'tradycyjny przelew / płatność gotówką',
+        'traditional' => 'tradycyjny przelew / gotówka',
         'on_delivery' => 'płatność przy odbiorze'
     ]
 ])

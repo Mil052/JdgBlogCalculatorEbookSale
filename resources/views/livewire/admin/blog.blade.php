@@ -47,24 +47,26 @@ class extends Component {
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 1V23" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
                 <path d="M1 12H23" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>            
-            <span>Nowy Post</span>
+            </svg>
+            <span class="hidden xs:inline">Nowy Post</span>
         </a>
     </div>
     <hr class="my-8">
     <ul>
         @foreach ($this->posts as $post)
-            <li wire:key="{{ $post->id }}" class="group flex my-8 gap-12 justify-between items-center">
-                <div class="flex gap-6">
-                    <div class="min-w-7">
-                        <div style="background-color: {{ $this->colors[$loop->index % $this->colorsCount] }}" class="w-3 h-full group-hover:w-7 transition-[width] duration-300"></div>
+            <li wire:key="{{ $post->id }}" class="group flex flex-col sm:flex-row my-4 sm:my-8 gap-3 sm:gap-16">
+                <div class="grow flex gap-3 xs:gap-4 sm:gap-6">
+                    <div class="sm:min-w-7">
+                        <div style="background-color: {{ $this->colors[$loop->index % $this->colorsCount] }}" class="w-3 h-full sm:group-hover:w-7 transition-[width] duration-300"></div>
                     </div>
                     <a href="/blog/{{ $post->id }}">
-                        <h2 class="inline font-paragraph text-lg font-normal mr-2">{{ $post->title }}</h2>
+                        <h2 class="inline font-paragraph text-base/5 sm:text-lg/6 font-normal mr-2">
+                            {{ $post->title }}
+                        </h2>
                         <span class="text-sm">(post&nbsp;id:&nbsp;{{ $post->id }})</span>
                     </a>
                 </div>
-                <div class="flex gap-6">
+                <div class="flex items-center justify-end gap-6 py-2 sm:py-0 border-t sm:border-none">
                     <a href="/admin/blog/post/{{ $post->id }}/edit">
                         <x-icon.pen />
                     </a>

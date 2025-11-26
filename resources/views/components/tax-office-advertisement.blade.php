@@ -1,4 +1,4 @@
-<article class="p-16 bg-cream rounded-sm">
+<article class="p-4 xs:px-8 pt-8 pb-16 md:p-16 bg-cream rounded-sm">
     <h3 class="heading-lg">
         Biuro Podatkowe Alfa&Omega
     </h3>

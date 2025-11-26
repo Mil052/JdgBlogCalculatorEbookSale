@@ -15,13 +15,13 @@ new class extends Component {
     }
 }; ?>
 
-<section>
-    <h1>{{ $post->title }}</h1>
-    <div>
+<section class="h-full section bg-light-grey">
+    <h1 class="heading-lg">{{ $post->title }}</h1>
+    <div class="blog-post my-16">
         {!! $post->content !!}
     </div>
-    <div class="flex justify-between">
-        <p>{{ $post->author}}</p>
-        <p>{{ $post->created_at }}</p>
+    <div class="flex justify-between font-paragraph text-lg">
+        <p>{{ $post->created_at->toDateString() }}</p>
+        <p class="italic">{{ $post->author}}</p>
     </div>
 </section>
