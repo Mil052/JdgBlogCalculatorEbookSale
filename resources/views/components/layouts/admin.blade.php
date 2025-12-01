@@ -90,5 +90,6 @@
                 </ul>
             </nav>
         </footer>
+        @livewireScriptConfig
     </body>
 </html>

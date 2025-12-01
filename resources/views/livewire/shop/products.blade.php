@@ -17,7 +17,7 @@ class extends Component {
 }; ?>
 
 <section>
-    <h1 class="bg-white page-title px-35 py-20">Nasze książki</h1>
+    <h1 class="bg-white page-title px-35 py-20">Nasze produkty</h1>
     <ul class="bg-light-grey grid grid-cols-[repeat(auto-fill,_24rem)] gap-8 py-12 px-4 mb-16 justify-center">
         @foreach ($products as $product)
             <li wire:key="{{ $product->id }}" class="w-sm">
@@ -30,7 +30,7 @@ class extends Component {
                     <img src="{{'/storage/products_assets/' . $product->image }}" alt="książka" class="max-h-96 object-contain">
                     <div>
                         <h3 class="info-sm text-coffee">{{ $product->type }}</h3>
-                        <p class="paragraph-sm my-1 h-36">{{ $product->excerpt }}</p>
+                        <p class="paragraph my-1 h-36">{{ $product->excerpt }}</p>
                         <a href="{{ '/shop/product/' . $product->id }}" class="flex gap-3 items-end justify-end">
                             <span class="text-sea-dark info-sm">zobacz szczegóły</span>
                             <x-icon.sqr-arrow-down class="h-6 w-6"/>
@@ -38,7 +38,7 @@ class extends Component {
                     </div>
                     <div class="border-t border-coffee">
                         <div class="flex justify-between items-center mt-4">
-                            <div class="paragraph-base">{{ $product->price }} <span>zł</span></div>  
+                            <div class="paragraph">{{ $product->price }} <span>zł</span></div>  
                             <livewire:shop.add-to-cart-btn :product-id="$product->id"/>
                         </div>
                     </div>

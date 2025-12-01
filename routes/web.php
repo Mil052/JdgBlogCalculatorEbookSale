@@ -7,6 +7,7 @@ use Livewire\Volt\Volt;
 Volt::route('/', 'home')->name('home');
 Volt::route('blog', 'blog')->name('blog');
 Volt::route('blog/{post}', 'show-post')->name('post');
+Volt::route('about-us', 'about-us')->name('about-us');
 
 // Shop
 Volt::route('shop', 'shop.products')->name('shop');

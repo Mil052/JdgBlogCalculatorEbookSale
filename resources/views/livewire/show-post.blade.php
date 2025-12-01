@@ -17,10 +17,11 @@ new class extends Component {
 
 <section class="h-full section bg-light-grey">
     <h1 class="heading-lg">{{ $post->title }}</h1>
+    <hr class="border-light-coffee my-16">
     <div class="blog-post my-16">
         {!! $post->content !!}
     </div>
-    <div class="flex justify-between font-paragraph text-lg">
+    <div class="flex justify-between font-paragraph sm:text-lg">
         <p>{{ $post->created_at->toDateString() }}</p>
         <p class="italic">{{ $post->author}}</p>
     </div>

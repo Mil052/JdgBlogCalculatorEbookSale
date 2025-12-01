@@ -83,7 +83,7 @@ new class extends Component {
                 Wyślij wiadomość
             </button>
             <div x-cloak x-show="openConfirmationWindow">
-                <h4 class="paragraph-sm my-4">
+                <h4 class="paragraph my-4">
                     Czy napewno chcesz wysłać wiadomość?
                 </h4>
                 <div class="flex justify-between">
@@ -106,7 +106,7 @@ new class extends Component {
                         <path d="M23 1L1 23" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
                 </button>
-                <h4 class="paragraph-sm my-8">
+                <h4 class="paragraph my-8">
                     Twoja wiadomość została wysłana.
                 </h4>
             </div>

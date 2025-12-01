@@ -41,7 +41,7 @@ class extends Component {
                 <h3 class="info-sm text-coffee">{{ $product->type }}</h3>
             </div>
             <div class="flex justify-between items-center">
-                <div class="paragraph-base">{{ $product->price }} <span>zł</span></div>
+                <div class="paragraph">{{ $product->price }} <span>zł</span></div>
                 <livewire:shop.add-to-cart-btn :product-id="$product->id"/>
             </div>
         </div>

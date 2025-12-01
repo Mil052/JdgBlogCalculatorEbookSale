@@ -34,7 +34,7 @@
                                         <a href="/shop" wire:navigate>Nasze produkty | Sklep</a>
                                     </li>
                                     <li>
-                                        <a href="#" wire:navigate>O nas</a>
+                                        <a href="/about-us" wire:navigate>O nas</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -55,7 +55,7 @@
                             <a href="/shop" wire:navigate>Nasze produkty | Sklep</a>
                         </li>
                         <li>
-                            <a href="#" wire:navigate>O nas</a>
+                            <a href="/about-us" wire:navigate>O nas</a>
                         </li>
                     </ul>
                 </nav>
@@ -94,7 +94,7 @@
                             <a href="/shop" wire:navigate>Sklep</a>
                         </li>
                         <li>
-                            <a href="#" wire:navigate>O nas</a>
+                            <a href="/about-us" wire:navigate>O nas</a>
                         </li>
                     </ul>
                 </nav>
@@ -109,5 +109,6 @@
                 @endif
             </div>
         </footer>
+        @livewireScriptConfig
     </body>
 </html>
