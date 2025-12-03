@@ -62,7 +62,7 @@
                 {{-- Shopping Cart | User Icons --}}
                 <ul class="flex gap-6">
                     <li>
-                        <a href="{{ Auth::check() ? '/settings/profile' : '/login' }}" wire:navigate>
+                        <a href="{{ Auth::check() ? '/user/dashboard' : '/login' }}" wire:navigate>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="12" cy="7" r="4" stroke="#785f5f" stroke-width="1.5"/>
                                 <path d="M3 20C5.19728 17.545 8.39043 16 11.9444 16C15.4984 16 18.6916 17.545 20.8889 20" stroke="#785f5f" stroke-width="1.5" stroke-linecap="round"/>

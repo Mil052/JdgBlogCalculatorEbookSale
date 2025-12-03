@@ -23,6 +23,9 @@ class extends Component {
         'on_delivery' => 'przy odbiorze'
     ];
 
+    public $blogColors = ['#785F5F', '#FFE2A2', '#974141', '#90BAC3'];
+    public $blogColorsCount = 4;
+
     public $orders;
     public $products;
     public $posts;
@@ -139,7 +142,7 @@ class extends Component {
                     @foreach ($posts as $post)
                         <li class="my-6">
                             <div class="flex gap-4">
-                                <div class="bg-coffee min-w-7"></div>
+                                <div style="background-color: {{ $blogColors[$loop->index % $blogColorsCount] }}" class="min-w-7"></div>
                                 <h3 class="font-title text-lg xs:text-xl">{{ $post->title }}</h3>
                             </div>
                             <p class="my-2 text-sm xs:text-base">{{ $post->excerpt }}</p>

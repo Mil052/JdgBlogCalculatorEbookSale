@@ -21,11 +21,7 @@ Route::post('shop/payment/notifications', App\Livewire\Actions\PayUNotifications
 
 // User Dashboard
 Route::middleware(['auth'])->group(function () {
-    Volt::route('dashboard', 'user.dashboard')->name('dashboard');
-    Route::redirect('settings', 'settings/profile');
-    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
-    Volt::route('settings/password', 'settings.password')->name('settings.password');
-    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+    Volt::route('user/dashboard', 'user.dashboard')->name('user-dashboard');
 });
 
 // Admin dashboard
