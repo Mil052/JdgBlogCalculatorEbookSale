@@ -76,7 +76,7 @@
             </div>
         </header>
         {{-- Main Section --}}
-        <main class="max-w-7xl w-full mx-auto">
+        <main class="min-w-xs max-w-7xl w-full mx-auto">
             {{ $slot }}
         </main>
         {{-- Footer --}}

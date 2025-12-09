@@ -18,7 +18,10 @@
                         <h3>{{ $created_at }}</h3>
                     </div>
                 </div>
-                <a href="#" class="text-sm sm:text-base">przejdź do artykułu</a>
+                <a href="/blog/{{ $id }}" class="font-technic text-sea-dark">
+                    przejdź do artykułu
+                    <span class="text-xl/5">&#8594;</span>
+                </a>
             </div>
         </div>
     </div>

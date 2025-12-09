@@ -25,7 +25,7 @@ new class extends Component {
 }; ?>
 
 <section>
-    <h1 class="bg-white page-title px-16 sm:px-35 py-20">Blog</h1>
+    <h1 class="bg-white page-title px-8 xs:px-16 lg:px-32 py-20">Blog</h1>
     <div class="bg-light-grey px-4 sm:px-8 py-8 flex gap-8 md:gap-12 flex-col sm:flex-row">
         <div>
             <div class="flex gap-8">

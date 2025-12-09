@@ -17,7 +17,7 @@ Volt::route('shop/order', 'shop.create-order')->name('create-order');
 Volt::route('shop/order/payment-status', 'shop.order-payment-status')->name('order-payment-status');
 
 // PayU Notifications
-Route::post('shop/payment/notifications', App\Livewire\Actions\PayUNotifications::class)->name('payment-notifications');
+Route::post('shop/payment/notifications', App\Livewire\Actions\PayUNotifications::class)->withoutMiddleware([Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class])->name('payment-notifications');
 
 // User Dashboard
 Route::middleware(['auth'])->group(function () {

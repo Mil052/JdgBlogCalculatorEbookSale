@@ -10,7 +10,9 @@ class extends Component {
 }; ?>
 
 <section>
-    <h1 class="bg-white page-title px-16 sm:px-35 py-20">O Nas</h1>
+    <h1 class="bg-white page-title px-8 xs:px-16 lg:px-32 py-20">
+        O Nas
+    </h1>
     <div class="px-4 sm:px-8 py-12 flex flex-col lg:flex-row gap-16 lg:gap-12">
         <article>
             <h3 class="info-base text-coffee">

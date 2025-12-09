@@ -10,7 +10,7 @@ use App\Models\Order;
 
 class PayUNotifications
 {
-    private function getSignatureFromHeader($signatureHeader)
+    protected function getSignatureFromHeader($signatureHeader)
     {
         // https://developers.payu.com/europe/pl/docs/payment-flows/lifecycle/#notification-examples
         $params = explode(";", $signatureHeader);
@@ -24,7 +24,7 @@ class PayUNotifications
         return null;
     }
 
-    private function checkSignature($signatureHeader, $payload)
+    protected function checkSignature($signatureHeader, $payload)
     {
         $signature = $this->getSignatureFromHeader($signatureHeader);
         $computedSignature = md5( $payload . env('PAYU_SECOND_KEY_MD5'));
@@ -49,7 +49,6 @@ class PayUNotifications
         $validSignature = $this->checkSignature($signatureHeader, $payload);
 
         if ($validSignature) {
-            Log::debug('PayU Notification Signature is Valid.');
             $requestData = json_decode($payload, true);
 
             Log::debug('PayU Notification Order status: ' . $requestData['order']['status']);
@@ -65,7 +64,8 @@ class PayUNotifications
             $order->payment_status = $requestData['order']['status'];
 
             if ($requestData['order']['status'] === 'COMPLETED') {
-                $order->payment_transaction_id = $requestData['properties']['value'];
+                $order->payment_transaction_id = $requestData['properties'][0]['value'];
+                $order->order_status = 'accepted';
             }
             
             $order->save();

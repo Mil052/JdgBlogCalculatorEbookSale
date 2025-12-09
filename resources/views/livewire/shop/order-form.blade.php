@@ -66,7 +66,7 @@ new class extends Component {
     }
 }; ?>
 
-<form class="m-8" wire:submit.prevent="submitOrder">
+<form wire:submit.prevent="submitOrder" class="@container">
     {{-- Dane do wysyłki --}}
     <h2 class="heading-sm m-12">Adres do wysyłki</h2>
     <fieldset>
@@ -114,21 +114,21 @@ new class extends Component {
     {{-- Sposób płatności --}}
     <div class="flex flex-col gap-2 my-3">
         <label for="payment" class="label">wybierz sposób płatności</label>
-        <div class="flex gap-20 justify-center input-secondary">
+        <div class="flex flex-col @xl:flex-row gap-x-12 gap-y-1 justify-center input-secondary">
             <div>
-                <input type="radio" id="payment_online" name="payment-type" value="online" required class="mx-4" wire:model="form.paymentType">
+                <input type="radio" id="payment_online" name="payment-type" value="online" required class="mr-4" wire:model="form.paymentType">
                 <label for="payment_online" class="label">płatność online</label>
             </div>
             <div>
-                <input type="radio" id="payment_traditional" name="payment-type" value="traditional" required class="mx-4" wire:model="form.paymentType">
+                <input type="radio" id="payment_traditional" name="payment-type" value="traditional" required class="mr-4" wire:model="form.paymentType">
                 <label for="payment_traditional" class="label">tradycyjny przelew</label>
             </div>
             <div>
-                <input type="radio" id="payment_on_delivery" name="payment-type" value="on_delivery" required class="mx-4" wire:model="form.paymentType">
-                <label for="payment_on_delivery" class="label">płatność przy odbiorze</label>
+                <input type="radio" id="payment_on_delivery" name="payment-type" value="on_delivery" required class="mr-4" wire:model="form.paymentType">
+                <label for="payment_on_delivery" class="label">przy odbiorze</label>
             </div>
-            <div>@error('form.payment')<span>{{ $message }}</span>@enderror</div>
         </div>
+        <div>@error('form.payment')<span>{{ $message }}</span>@enderror</div>
     </div>
     {{-- Dane do faktury - pokaż/ukryj formularz --}}
     <div class="my-12">

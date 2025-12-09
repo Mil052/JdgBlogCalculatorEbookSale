@@ -35,19 +35,19 @@ class extends Component {
 }; ?>
 
 <div>
-    <div class="bg-white pl-35 pr-8 py-20 flex justify-between items-end">
+    <div class="bg-white px-8 xs:px-16 lg:px-32 py-20 flex justify-between items-end">
         <h1 class="page-title">Twoje zamówienie</h1>
-        <a href="/shop" class="flex gap-6 items-end">
-            <span>kontynuuj zakupy</span>
-            <x-icon.sqr-arrow-up class="w-8 h-8"/>
+        <a href="/shop" class="flex gap-4 items-end text-sea-dark sm:mb-1">
+            <span class="hidden sm:inline">kontynuuj zakupy</span>
+            <x-icon.sqr-arrow-up class="w-7 h-7 mb-1"/>
         </a>
     </div>
     @if(!empty($products))
-        <div class="bg-light-grey flex flex-col md:flex-row gap-8 mb-16">
+        <div class="bg-light-grey px-4 lg:px-8 py-8 flex flex-col-reverse md:flex-row gap-12 mb-16">
             <section class="md:w-3/5">
                 <livewire:shop.order-form :products="$products" :total="$total" :shoppingCart="$shoppingCart" />
             </section>
-            <section>
+            <section class="min-w-xs md:w-2/5">
                 <x-shop.order-summary :products="$products" :total-price="$total"/>
             </section>
         </div>

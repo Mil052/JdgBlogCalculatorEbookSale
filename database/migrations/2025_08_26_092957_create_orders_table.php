@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('payment_transaction_id')->nullable();
             $table->decimal('total_price');
             // status
-            $table->enum('order_status', ['awaiting', 'accepted', 'completed']);
+            $table->enum('order_status', ['awaiting', 'accepted', 'completed', 'canceled']);
             // order shipping data 
             $table->string('name');
             $table->string('surname');

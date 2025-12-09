@@ -63,46 +63,48 @@ new class extends Component {
     }
 }; ?>
 
-<section class="flex flex-col h-full">
-    <div class="bg-white pl-35 pr-8 py-20 flex justify-between items-end">
+<section class="h-full">
+    <div class="bg-white px-8 xs:px-16 lg:px-32 py-20 flex justify-between items-end">
         <h1 class="page-title">Twoje zakupy</h1>
-        <a href="/shop" class="flex gap-6 items-end">
-            <span>kontynuuj zakupy</span>
-            <x-icon.sqr-arrow-up class="w-8 h-8"/>
+        <a href="/shop" class="flex gap-4 items-end text-sea-dark sm:mb-1">
+            <span class="hidden sm:inline">kontynuuj zakupy</span>
+            <x-icon.sqr-arrow-up class="w-7 h-7 mb-1"/>
         </a>
     </div>
-    <div class="bg-light-grey p-12 grow-1 mb-16 flex justify-center items-center">
+    <div class="bg-light-grey px-3 xs:px-6 py-12 sm:p-12 grow-1 mb-16 flex justify-center items-center">
         @if (!empty($cart_products))
-            <div class="bg-white rounded-sm p-16 shadow-[6px_6px_6px_#00000040]">
+            <div class="bg-white rounded-sm px-3 xs:px-4 sm:px-8 lg:px-16 py-16 shadow-[6px_6px_6px_#00000040]">
                 <table>
-                    <colgroup>
-                        <col class="w-12 hidden md:table-column"/>
-                        <col class="w-70"/>
-                        <col class="w-36 hidden sm:table-column"/>
-                        <col class="w-36 md:w-36"/>
-                        <col class="w-22 md:w-26"/>
-                        <col class="w-8"/>
-                    </colgroup>
                     <thead>
-                        <tr class="font-paragraph text-xs">
-                            <th></th>
-                            <th scope="col" class="text-left font-normal pb-6">produkt</th>
-                            <th scope="col" class="text-center font-normal pb-6">cena</th>
-                            <th scope="col" class="text-center font-normal pb-6">ilość</th>
-                            <th scope="col" class="text-center font-normal pb-6">wartość</th>
-                            <th></th>
+                        <tr class="font-paragraph text-xs border-b border-coffee">
+                            <th scope="col" class="w-70 lg:w-78 hidden md:table-cell text-left font-normal pb-6">produkt</th>
+                            <th scope="col" class="w-26 text-center font-normal pb-6">cena</th>
+                            <th scope="col" class="w-36 text-center font-normal pb-6">ilość</th>
+                            <th scope="col" class="w-26 text-center font-normal pb-6">wartość</th>
+                            <th class="w-8"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
-                            <tr class="border-t border-coffee">
-                                <td class="h-full">
-                                    <div class="w-6 h-20 bg-red-brick"></div>
+                            {{-- Small screen product info --}}
+                            <tr class="md:hidden">
+                                <td colspan="4" class="pt-4">
+                                    <div class="flex gap-4">
+                                        <div class="min-w-6 h-20 bg-red-brick"></div>
+                                        <img src="{{ '/storage/products_assets/' . $product->image }}" alt="książka" class="h-20 min-w-15 object-cover object-center">
+                                        <div>
+                                            <div class="font-technic text-sm font-light">{{ $product->type }}</div>
+                                            <div class="font-title text-lg/6">{{ $product->name }}</div>
+                                        </div>
+                                    </div>
                                 </td>
+                            </tr>
+                            <tr class="border-b border-coffee">
                                 {{-- product --}}
-                                <td>
+                                <td class="hidden md:table-cell">
                                     <div class="flex gap-4 py-4">
-                                        <img src="{{ '/storage/products_assets/' . $product->image }}" alt="książka" class="h-20 w-15 object-cover object-center">
+                                        <div class="hidden lg:block min-w-6 h-20 bg-red-brick"></div>
+                                        <img src="{{ '/storage/products_assets/' . $product->image }}" alt="książka" class="h-20 min-w-15 object-cover object-center">
                                         <div>
                                             <div class="font-technic text-sm font-light">{{ $product->type }}</div>
                                             <div class="font-title text-lg/6">{{ $product->name }}</div>
@@ -110,19 +112,19 @@ new class extends Component {
                                     </div>
                                 </td>
                                 {{-- price --}}
-                                <td class="font-paragraph text-xl text-center">
+                                <td class="font-paragraph text-base sm:text-xl text-center py-4">
                                     {{ $product->price }} <span class="text-xs">zł</span>
                                 </td>
                                 {{-- quantity --}}
                                 <td>
-                                    <div class="flex gap-4 justify-center">
+                                    <div class="flex gap-3 xs:gap-4 justify-center py-4">
                                         {{-- minus button --}}
                                         <button wire:click="decreaseProductQuantity({{ $product->id }})">
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M0 10L20 10" stroke="black"/>
                                             </svg>
                                         </button>
-                                        <div class="font-paragraph text-xl/5 text-center min-w-[38px] py-2 px-1 border border-dark-grey rounded-sm">
+                                        <div class="font-paragraph text-base/5 sm:text-xl/5 text-center min-w-[30px] sm:min-w-[38px] py-1 sm:py-2 px-1 border border-dark-grey rounded-sm">
                                             {{ $cart_products[$product->id] }}
                                         </div>
                                         {{-- plus button --}}
@@ -134,12 +136,12 @@ new class extends Component {
                                     </div>
                                 </td>
                                 {{-- total --}}
-                                <td class="font-paragraph text-xl text-center">
+                                <td class="font-paragraph text-base sm:text-xl text-center py-4">
                                     {{ $product->price * $cart_products[$product->id] }} <span class="text-xs">zł</span>
                                 </td>
                                 <td class="text-right">
-                                    <button wire:click="deleteFromCart({{ $product->id }})">
-                                        <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <button wire:click="deleteFromCart({{ $product->id }})" class="h-6 sm:h-8">
+                                        <svg width="24" height="auto" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M3 6L3.9232 29.0799C3.9661 30.1526 4.84813 31 5.9216 31H18.0784C19.1519 31 20.0339 30.1526 20.0768 29.0799L21 6" stroke="black" stroke-linecap="round"/>
                                             <path d="M1 3H23" stroke="black" stroke-linecap="round"/>
                                             <path d="M9 3C9 1.89543 9.89543 1 11 1H13C14.1046 1 15 1.89543 15 3" stroke="black"/>
@@ -154,8 +156,9 @@ new class extends Component {
                     </tbody>
                     <tfoot>
                         <tr class="border-t border-coffee">
-                            <th colspan="4" class="font-paragraph text-xl font-light pt-4 text-left">Razem</th>
-                            <td class="font-paragraph text-2xl font-medium pt-4 text-center">
+                            <th colspan="2" class="font-paragraph text-xl font-light pt-4 text-left">Razem</th>
+                            <td class="hidden md:table-cell"></td>
+                            <td colspan="2" class="font-paragraph text-2xl font-medium pt-4 text-center">
                                 {{ $this->total }} <span class="font-normal text-base">zł</span>
                             </td>
                         </tr>

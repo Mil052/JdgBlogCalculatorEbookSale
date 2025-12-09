@@ -48,6 +48,7 @@
     --animate-emerge: emerge 300ms linear 300ms forwards;
     --animate-slide-in-left-bottom: slide-in-left-bottom 400ms linear 200ms forwards;
     --animate-slide-in-right-top: slide-in-right-top 400ms linear 400ms forwards;
+    --animate-slide-left: slide-left 600ms linear forwards;
 
     @keyframes blink {
         50% {
@@ -84,6 +85,15 @@
         to {
             translate: 0 0;
             opacity: 1;
+        }
+    }
+
+    @keyframes slide-left {
+        from {
+            translate: 0 0;
+        }
+        to {
+            translate: -320px 0;
         }
     }
 }
@@ -199,8 +209,8 @@
 
     .page-title {
         font-family: var(--font-title);
-        font-size: var(--text-6xl);
-        line-height: calc(var(--text-6xl) * 1);
+        font-size: var(--text-4xl);
+        line-height: calc(var(--text-4xl) * 1);
     }
 
     .heading-lg {
@@ -299,9 +309,8 @@
         }
 
         .page-title {
-            font-family: var(--font-title);
-            font-size: var(--text-8xl);
-            line-height: calc(var(--text-8xl) * 1);
+            font-size: var(--text-5xl);
+            line-height: calc(var(--text-5xl) * 1);
         }
 
         .heading-lg {
@@ -334,11 +343,21 @@
         .area {
             padding: calc(var(--spacing) * 12);
         }
+
+        .page-title {
+            font-size: var(--text-6xl);
+            line-height: calc(var(--text-6xl) * 1);
+        }
     }
 
     @media (width >= 64rem) {
         .area {
             padding: calc(var(--spacing) * 12);
+        }
+
+        .page-title {
+            font-size: var(--text-7xl);
+            line-height: calc(var(--text-7xl) * 1);
         }
         
         /* .trim-right::before {
