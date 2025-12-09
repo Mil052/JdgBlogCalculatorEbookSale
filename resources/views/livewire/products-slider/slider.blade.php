@@ -34,7 +34,6 @@ new class extends Component {
         sliderIds: {{ json_encode($sliderIds) }}
     }"
     x-init="
-
         animation = $refs.list.getAnimations()[0];
         setInterval(() => {
             currentIndex = (currentIndex + 1) % total;

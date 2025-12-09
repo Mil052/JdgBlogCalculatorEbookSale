@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Http;
 
 if (! function_exists('PayUAuthorize')) {
-    function PayUAuthorize(): string {
+  function PayUAuthorize(): string 
+	{
 		$response = Http::asForm()->post(env('PAYU_AUTHORIZATION_URL'), [
 			'grant_type' => 'client_credentials',
 			'client_id' => env('PAYU_CLIENT_ID'),
@@ -19,7 +20,8 @@ if (! function_exists('PayUAuthorize')) {
 }
 
 if (! function_exists('payUCreateOrder')) {
-    function payUCreateOrder(string $authorizationToken, $orderId, $description, $products, $total, $buyer) {
+  function payUCreateOrder(string $authorizationToken, $orderId, $description, $products, $total, $buyer) 
+	{
 		$response = Http::withHeaders([
 			'Content-Type' => 'application/json',
 			'Authorization' => 'Bearer ' . $authorizationToken

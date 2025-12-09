@@ -9,10 +9,10 @@
         <x-home.income-diagram
             :id=" $id . 'Diagram'"
             :total="100"
-            :checked="(int) ($income / ($yearlyRevenue - $yearlyExpenses) * 100)"
+            :checked="$income > 0 ? (int) ($income / ($yearlyRevenue - $yearlyExpenses) * 100) : 0"
         />
     </div>
-    <dl class="grid @xl:grid-cols-2 gap-x-12 @xl:gap-y-1 font-light text-sm sm:text-base">
+    <dl class="grid @lg:grid-cols-2 gap-x-12 @lg:gap-y-1 font-light text-sm">
         <div class="flex gap-8 justify-between">
             <dt>Przychody</dt>
             <dd>{{ $yearlyRevenue }} PLN</dd>

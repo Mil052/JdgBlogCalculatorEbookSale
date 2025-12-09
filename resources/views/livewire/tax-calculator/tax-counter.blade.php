@@ -43,7 +43,7 @@ new class extends Component {
             <h2 class="heading-base">Kalkulator zarobków</h2>
             <h3 class="heading-sm">w zależności od formy opodatkowania</h3>
         </div>
-        <form x-on:submit.prevent="$wire.$refresh(); $dispatch('updatediagram')" class="@container font-technic">
+        <form x-on:submit.prevent="await $wire.$refresh(); $dispatch('updatediagram')" class="@container font-technic">
             <div class="flex flex-col my-3 sm:my-6">
                 <label for="monthly-revenue" class="text-coffee text-lg xs:text-xl sm:text-2xl pb-2 sm:pb-4 border-b-2">Miesięczne przychody</label>
                 <input type="text" id="monthly-revenue" name="monthly-revenue" class="bg-light-grey px-4 py-2 text-coffee xs:text-xl my-3 sm:my-6 rounded-sm" wire:model="monthlyRevenue">
@@ -76,8 +76,8 @@ new class extends Component {
             <button type="submit" class="btn-primary">OBLICZ DOCHÓD</button>
         </form>
     </div>
-    <div class="bg-coffee rounded-sm">
-        <div class="m-6 md:m-8">
+    <div>
+        <div class="bg-coffee p-4 rounded-sm mb-4 shadow-[2px_2px_8px_#00000040]">
             <x-taxation-summary
                 id="scale"
                 :yearlyRevenue="$this->yearlyRevenue"
@@ -89,8 +89,7 @@ new class extends Component {
                 :income="$this->taxes['scale']['income']"
             />
         </div>
-        <hr class="mx-12">
-        <div class="m-6 md:m-8">
+        <div class="bg-coffee p-4 rounded-sm my-4 shadow-[2px_2px_8px_#00000040]">
             <x-taxation-summary
                 id="flat"
                 :yearlyRevenue="$this->yearlyRevenue"
@@ -102,8 +101,7 @@ new class extends Component {
                 :income="$this->taxes['flat']['income']"
             />
         </div>
-        <hr class="mx-12">
-        <div class="m-6 md:m-8">
+        <div class="bg-coffee p-4 rounded-sm mt-4 shadow-[2px_2px_8px_#00000040]">
             <x-taxation-summary
                 id="lumpSum"
                 :yearlyRevenue="$this->yearlyRevenue"
