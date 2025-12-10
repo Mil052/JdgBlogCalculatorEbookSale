@@ -27,8 +27,8 @@ if (! function_exists('payUCreateOrder')) {
 			'Authorization' => 'Bearer ' . $authorizationToken
 		])->post(env('PAYU_ORDER_URL'), [
 			'continueUrl' => route('order-payment-status', [ 'id' => $orderId ]),
-			// 'notifyUrl' => route('payment-notifications'),
-			'notifyUrl' => 'https://neville-metallic-takisha.ngrok-free.dev/shop/payment/notifications',
+			'notifyUrl' => route('payment-notifications'),
+			// 'notifyUrl' => 'https://neville-metallic-takisha.ngrok-free.dev/shop/payment/notifications',
 			'customerIp' => request()->ip(),
 			'merchantPosId' => env('PAYU_MERCHANT_POS_ID'),
 			'extOrderId' => $orderId,
