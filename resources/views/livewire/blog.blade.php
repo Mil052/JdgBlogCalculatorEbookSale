@@ -41,7 +41,7 @@ new class extends Component {
                 </a>
             </div>
         </div>
-        <img src="{{ isset($lastPostImage) ? '/storage/blog_posts_assets/' . $lastPostImage : '/assets/office.webp' }}" alt="blog article image" class="block min-w-50 sm:w-1/4 object-cover rounded-sm">
+        <img src="{{ isset($lastPostImage) ? '/storage/blog_posts_assets/' . $lastPostImage->file_name : '/assets/office.webp' }}" alt="blog article image" class="block min-w-50 sm:w-1/4 object-cover rounded-sm">
     </div>
     <div class="py-12 px-4 mb-16">
         <ul class="grid gap-4 xs:grid-cols-4 lg:grid-cols-6">

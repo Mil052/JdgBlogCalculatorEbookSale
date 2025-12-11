@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('type')->nullable();
             $table->text('description')->nullable();
-            $table->string('excerpt')->nullable();
+            $table->text('excerpt')->nullable();
             $table->string('image')->nullable();
             $table->decimal('price')->nullable();
             $table->boolean('available')->default(false);
