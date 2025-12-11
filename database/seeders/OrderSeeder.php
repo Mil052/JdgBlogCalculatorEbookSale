@@ -15,17 +15,17 @@ class OrderSeeder extends Seeder
     {
         DB::table('orders')->insert([
             'id' => 1,
-            'user_id' => 2,
+            'user_id' => 1,
             'payment_type' => 'on_delivery',
             'total_price' => 89.98,
             'order_status' => 'awaiting',
             'name' => 'Miłosz',
             'surname' => 'Jan',
             'email' => 'gajda.milosz@gmail.com',
-            'phone' => '796-161-492',
-            'postal_code' => '54-054',
+            'phone' => '111-222-333',
+            'postal_code' => '50-102',
             'city' => 'Wrocław',
-            'address' => 'ul. Daktylowa 5',
+            'address' => 'ul. Podwale 1',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

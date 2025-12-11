@@ -31,7 +31,7 @@ class ProductSeeder extends Seeder
                 'name' => 'JDG 2025',
                 'type' => 'książka',
                 'description' => 'Prowadzenie jednoosobowej działalności gospodarczej w Polsce to wciąż jedna z najpopularniejszych form pracy na własny rachunek. Każdego roku przepisy prawne i podatkowe ulegają jednak istotnym zmianom, które bezpośrednio wpływają na codzienne funkcjonowanie przedsiębiorców. Niniejsza książka powstała, aby w przystępny i praktyczny sposób zaprezentować najnowsze regulacje dotyczące samozatrudnienia - od zasad rejestracji firmy, przez wybór formy opodatkowania, po obowiązki wobec ZUS i urzędów skarbowych. Dzięki temu otrzymasz aktualną i uporządkowaną wiedzę, która pozwoli Ci podejmować świadome decyzje i uniknąć najczęstszych błędów przy prowadzeniu własnej działalności.',
-                'excerpt' => 'Każdego roku przepisy prawne i podatkowe ulegają istotnym zmianom, które bezpośrednio wpływają na codzienne funkcjonowanie przedsiębiorców. Niniejsza książka powstała, aby w przystępny i praktyczny sposób zaprezentować najnowsze regulacje dotyczące samozatrudnienia',
+                'excerpt' => 'Każdego roku przepisy prawne i podatkowe ulegają istotnym zmianom. Niniejsza książka powstała, aby w przystępny i praktyczny sposób zaprezentować najnowsze regulacje dotyczące samozatrudnienia',
                 'image' => 'jdg_poradnik.webp',
                 'price' => 39.99,
                 'available' => true,
